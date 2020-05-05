@@ -1,0 +1,48 @@
+<nz-input-group [nzPrefix]="prefixTemplateLastName">
+  <input
+    type="text"
+    nz-input
+    placeholder="Saisissez votre nom"
+    [(ngModel)]="credentials.lastname"
+  />
+  <input
+    type="text"
+    nz-input
+    placeholder="Saisissez votre prénom"
+    [(ngModel)]="credentials.firstname"
+  />
+</nz-input-group>
+<ng-template #prefixTemplateLastName><i nz-icon nzType="user"></i></ng-template>
+
+<input
+  type="text"
+  nz-input
+  placeholder="Saisissez votre adresse mail"
+  [(ngModel)]="credentials.email"
+/>
+<input
+  type="text"
+  nz-input
+  placeholder="Saisissez votre numéro de téléphone"
+  [(ngModel)]="credentials.phone"
+/>
+
+<nz-input-group [nzSuffix]="suffixTemplate">
+  <input
+    [type]="passwordVisible ? 'text' : 'password'"
+    nz-input
+    placeholder="input password"
+    [(ngModel)]="credentials.password"
+  />
+</nz-input-group>
+<ng-template #suffixTemplate>
+  <i
+    nz-icon
+    [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+    (click)="passwordVisible = !passwordVisible"
+  ></i>
+</ng-template>
+
+<button nz-button nzType="primary" (click)="attempsRegister()">
+  M'enregistrer
+</button>
