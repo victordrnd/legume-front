@@ -24,12 +24,13 @@ import { DriveComponent } from './pages/home/drive/drive.component';
 import { ProductsComponent } from './pages/products/products.component';
 import localeFr from '@angular/common/locales/fr';
 import { PanierModalComponent } from './pages/products/panier-modal/panier-modal.component';
+import { InformationsComponent } from './pages/informations/informations.component';
 
 registerLocaleData(localeFr, 'fr-FR');
 
 @NgModule({
   
-  declarations: [AppComponent, HeaderComponent, FooterComponent, LoginComponent, RegisterComponent, HomeComponent,HeroComponent, AboutComponent, DriveComponent, BookingComponent, BookingsTableComponent, CreateBookingModalComponent, ProductsComponent, PanierModalComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, LoginComponent, RegisterComponent, HomeComponent,HeroComponent, AboutComponent, DriveComponent, BookingComponent, BookingsTableComponent, CreateBookingModalComponent, ProductsComponent, PanierModalComponent, InformationsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
