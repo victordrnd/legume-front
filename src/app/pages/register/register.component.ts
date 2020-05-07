@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
     lastname: "",
     phone: "",
   };
-
+  passwordVisible = false
   constructor(private userService: UserService) {}
 
   async ngOnInit() {
