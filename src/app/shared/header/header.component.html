@@ -1,33 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarTogglerDemo01"
-    aria-controls="navbarTogglerDemo01"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
+<nav class="navbar navbar-expand-lg navbar-light  shadow-sm bg-white rounded">
+  <a class="navbar-brand"><img src="../../../assets/logo.gif" class="logo" /></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <img src="./assets/logo.png" class="rounded" />
-    <div class="container">
-      <div class="row">
-        <div class="col-sm"></div>
-        <div class="col-sm">
-          <i nz-icon nzType="shopping-cart" nzTheme="outline"></i>
-          <h5>Commander</h5>
-        </div>
-        <div class="col-sm text-right">
-          <div class="row">
-            <h5>Mes paniers</h5>
-            <button nz-button nzType="primary">
-              <i nz-icon nzType="user" class="mr-3"></i> Connexion
-            </button>
-          </div>
-        </div>
-      </div>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/kits">Produits</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/fabricants">Informations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/commandes">Contact</a>
+      </li>
+    </ul>
+    <div class="d-inline">
+      <button nz-button nzType="primary"><i nz-icon nzType="user" nzTheme="outline"></i>Espace client</button>
     </div>
   </div>
 </nav>

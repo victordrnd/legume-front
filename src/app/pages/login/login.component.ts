@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
     email: "",
     password: "",
   };
+  passwordVisible = false;
   constructor(private userService: UserService) {}
 
   async ngOnInit() {
