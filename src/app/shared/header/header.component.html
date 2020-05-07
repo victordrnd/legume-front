@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light  shadow-sm bg-white rounded">
-  <a class="navbar-brand"><img src="../../../assets/logo.gif" class="logo" /></a>
+<nav class="navbar navbar-expand-lg navbar-light  bg-white rounded">
+  <a class="navbar-brand" routerLink="/"><img src="../../../assets/logo2.gif" class="logo" /></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,20 +7,20 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/dashboard">Accueil</a>
+        <a class="nav-link" routerLink="/">Accueil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/kits">Produits</a>
+        <a class="nav-link" >Produits</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/fabricants">Informations</a>
+        <a class="nav-link" >Informations</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/commandes">Contact</a>
+        <a class="nav-link">Contact</a>
       </li>
     </ul>
     <div class="d-inline">
-      <button nz-button nzType="primary"><i nz-icon nzType="user" nzTheme="outline"></i>Espace client</button>
+      <button nz-button nzType="primary" routerLink="connexion"><i nz-icon nzType="user" nzTheme="outline"></i>Espace client</button>
     </div>
   </div>
 </nav>

@@ -16,11 +16,14 @@ import fr from "@angular/common/locales/fr";
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
+import { HeroComponent } from './pages/home/hero/hero.component';
+import { AboutComponent } from './pages/home/about/about.component';
+import { DriveComponent } from './pages/home/drive/drive.component';
 
 registerLocaleData(fr);
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, LoginComponent, RegisterComponent, HomeComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, LoginComponent, RegisterComponent, HomeComponent, HeroComponent, AboutComponent, DriveComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

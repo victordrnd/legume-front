@@ -1,13 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
-button {
-    .anticon {
-        transform: translateY(-2px);
-    }
+.anticon {
+    transform: translateY(-5px);
 }
 
 body {
     font-family: "Averta";
 }
+.line {
+    height: 0.1875rem;
+    width: 9%;
+    background: #909cff;
+    border-radius: 7px;
+    float: left;
+}
+.bold {
+    font-family: "AvertaBold";
+}
+.text-primary {
+    color: #909cff !important;
+}
+::-webkit-scrollbar {
+    display: none;
+  }
 
 @font-face {
     font-family: "AvertaLight";
