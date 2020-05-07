@@ -1,0 +1,34 @@
+<h1 class="text-center bold">Liste des produits disponibles</h1>
+<div class="row mt-5" *ngIf="products">
+    <div class="col-8 mx-auto d-block ">
+        <p class="text-right">Disponible du <b class="text-primary">{{products.from | date}}</b> au <b class="text-primary">{{products.to | date}}</b></p>
+        <nz-table #basicTable [nzData]="products?.products" nzShowPagination="false">
+            <thead>
+                <tr class="bold">
+                    <th>Name</th>
+                    <th>Origine</th>
+                    <th>Catégorie</th>
+                    <th>Unité</th>
+                    <th>Prix</th>
+                    
+                </tr>
+            </thead>
+            <tbody *ngIf="products">
+                <tr *ngFor="let panier of products.paniers">
+                    <td class="bold">{{ panier.libelle }} <i nz-icon class="text-primary" nzType="question-circle" nzTheme="outline" (click)="openPanierModal(panier)"></i></td>
+                    <td>{{ panier.origin }}</td>
+                    <td>France</td>
+                    <td>{{ panier.unit }}</td>
+                    <td>{{ panier.price | currency:'EUR'}}</td>
+                </tr>
+                <tr *ngFor="let product of products.products">
+                    <td class="bold">{{ product.libelle }}</td>
+                    <td>{{ product.origin }}</td>
+                    <td>{{product.category.libelle}}</td>
+                    <td>{{ product.unit }}</td>
+                    <td>{{ product.price | currency:'EUR'}}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

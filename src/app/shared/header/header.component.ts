@@ -7,5 +7,7 @@ import { UserService } from "../../core/user.service";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
+  visible = false;
+  
   ngOnInit() {}
 }

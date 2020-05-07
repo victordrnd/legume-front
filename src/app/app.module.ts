@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, LOCALE_ID } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -12,22 +12,24 @@ import { NZ_I18N } from "ng-zorro-antd/i18n";
 import { NgZorroAntdModule } from "ng-zorro-antd";
 import { fr_FR } from "ng-zorro-antd/i18n";
 import { registerLocaleData } from "@angular/common";
-import fr from "@angular/common/locales/fr";
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { BookingComponent } from './pages/booking/booking.component';
-import { BookingsTableComponent } from './pages/bookings-table/bookings-table.component';
-import { CreateBookingModalComponent } from './pages/create-booking-modal/create-booking-modal.component';
+import { BookingsTableComponent } from './pages/booking/bookings-table/bookings-table.component';
+import { CreateBookingModalComponent } from './pages/booking/create-booking-modal/create-booking-modal.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeroComponent } from './pages/home/hero/hero.component';
 import { AboutComponent } from './pages/home/about/about.component';
 import { DriveComponent } from './pages/home/drive/drive.component';
+import { ProductsComponent } from './pages/products/products.component';
+import localeFr from '@angular/common/locales/fr';
+import { PanierModalComponent } from './pages/products/panier-modal/panier-modal.component';
 
-registerLocaleData(fr);
+registerLocaleData(localeFr, 'fr-FR');
 
 @NgModule({
- 
-  declarations: [AppComponent, HeaderComponent, FooterComponent, LoginComponent, RegisterComponent, HomeComponent,HeroComponent, AboutComponent, DriveComponent, BookingComponent, BookingsTableComponent, CreateBookingModalComponent],
+  
+  declarations: [AppComponent, HeaderComponent, FooterComponent, LoginComponent, RegisterComponent, HomeComponent,HeroComponent, AboutComponent, DriveComponent, BookingComponent, BookingsTableComponent, CreateBookingModalComponent, ProductsComponent, PanierModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -36,7 +38,10 @@ registerLocaleData(fr);
     BrowserAnimationsModule,
     NgZorroAntdModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: fr_FR }],
+  providers: [{ provide: NZ_I18N, useValue: fr_FR }, {provide: LOCALE_ID, useValue: 'fr-FR'}],
   bootstrap: [AppComponent],
+  entryComponents : [
+    PanierModalComponent
+  ]
 })
 export class AppModule {}
