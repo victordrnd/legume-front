@@ -15,6 +15,9 @@ import { registerLocaleData } from "@angular/common";
 import fr from "@angular/common/locales/fr";
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { BookingComponent } from './pages/booking/booking.component';
+import { BookingsTableComponent } from './pages/bookings-table/bookings-table.component';
+import { CreateBookingModalComponent } from './pages/create-booking-modal/create-booking-modal.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeroComponent } from './pages/home/hero/hero.component';
 import { AboutComponent } from './pages/home/about/about.component';
@@ -23,7 +26,8 @@ import { DriveComponent } from './pages/home/drive/drive.component';
 registerLocaleData(fr);
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, LoginComponent, RegisterComponent, HomeComponent, HeroComponent, AboutComponent, DriveComponent],
+ 
+  declarations: [AppComponent, HeaderComponent, FooterComponent, LoginComponent, RegisterComponent, HomeComponent,HeroComponent, AboutComponent, DriveComponent, BookingComponent, BookingsTableComponent, CreateBookingModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
