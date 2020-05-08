@@ -7,7 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NZ_I18N } from "ng-zorro-antd/i18n";
-import { NzModalModule, NzButtonModule, NzNotificationModule } from "ng-zorro-antd";
+import { NzModalModule, NzButtonModule, NzNotificationModule, NzIconModule } from "ng-zorro-antd";
 import { fr_FR } from "ng-zorro-antd/i18n";
 import { registerLocaleData } from "@angular/common";
 
@@ -30,7 +30,8 @@ registerLocaleData(localeFr, 'fr-FR');
     ReactiveFormsModule,
     NzButtonModule,
     NzModalModule,
-    NzNotificationModule
+    NzNotificationModule,
+    NzIconModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: fr_FR },

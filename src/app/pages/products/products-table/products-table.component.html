@@ -19,7 +19,7 @@
             <td>France</td>
             <td>{{ panier.unit }}</td>
             <td>{{ panier.price | currency:'EUR'}}</td>
-            <td><button nz-button nzType="primary"><i nz-icon nzType="shopping" nzTheme="outline"></i></button></td>
+            <td *ngIf="orderMode"><button nz-button nzType="primary"><i nz-icon nzType="shopping" nzTheme="outline"></i></button></td>
         </tr>
         <tr *ngFor="let product of products.products">
             <td class="bold">{{ product.libelle }}</td>
@@ -27,7 +27,7 @@
             <td>{{product.category.libelle}}</td>
             <td>{{ product.unit }}</td>
             <td>{{ product.price | currency:'EUR'}}</td>
-            <td><button nz-button nzType="primary"><i nz-icon nzType="shopping" nzTheme="outline"></i></button></td>
+            <td *ngIf="orderMode"><button nz-button nzType="primary"><i nz-icon nzType="shopping" nzTheme="outline"></i></button></td>
         </tr>
     </tbody>
 </nz-table>
