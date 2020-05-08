@@ -23,7 +23,7 @@ export class UserService {
     if (this.getToken()) {
       try {
         const res: any = await this.http
-          .get(`${environment.apiUrl}/auth/current`)
+          .get(`${environment.apiUrl}auth/current`)
           .toPromise();
         this.setAuth(res);
         this.isAuthenticatedSubject.next(true);
@@ -48,7 +48,7 @@ export class UserService {
   }
 
   attemptAuth(credentials): any {
-    return this.http.post(`${environment.apiUrl}/auth/login`, credentials).pipe(
+    return this.http.post(`${environment.apiUrl}auth/login`, credentials).pipe(
       map((res: any) => {
         this.setAuth(res);
         return res;
@@ -58,7 +58,7 @@ export class UserService {
   }
 
   addUser(user: any): any {
-    return this.http.post(`${environment.apiUrl}/auth/signup`, user);
+    return this.http.post(`${environment.apiUrl}auth/signup`, user);
   }
 
   purgeAuth() {

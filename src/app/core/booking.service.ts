@@ -19,4 +19,9 @@ export class BookingService {
   getById(id) {
     return this.http.get(`${environment.apiUrl}/booking/${id}`);
   }
+
+
+  getMyBookings(){
+    return this.http.get(`${environment.apiUrl}booking/my`)
+  }
 }

@@ -1,0 +1,58 @@
+<div class="body pb-5">
+
+    <h1 class="pt-5 bold text-center">Espace client</h1>
+
+    <div class="row mt-4 mx-0">
+        <div class="col-10 d-block mx-auto">
+            <div class="row">
+                <div class="offset-1 col-4 px-0">
+                    <div class="bg-white rounded-lg pb-05 pt-1">
+                        <h5 class="mx-3 my-3">Réserver un créneau drive</h5>
+                        <div *ngIf="selectedDate" class="row bg-grey mx-05 rounded-lg mb-05">
+                            <div class="col-12 mt-4">
+                                <p class="mx-4">Sélectionnez un créneau horaire :</p>
+                            </div>
+                            <div class="col">
+                                <nz-select [(ngModel)]="selectedDate" (ngModelChange)="dayChange($event)"
+                                    class="mx-auto d-block w-75">
+                                    <nz-option *ngFor="let date of availability | keyvalue" [nzValue]="date.key"
+                                        nzLabel="{{date.key | date:'EEEE d MMMM'}}"></nz-option>
+                                </nz-select>
+                            </div>
+                            <div class="col ">
+                                <nz-select [(ngModel)]="selectedTime" class="mx-auto d-block w-75">
+                                    <nz-option *ngFor="let time of availability[selectedDate]"
+                                        [nzHide]="time.remaining == 0" [nzValue]="time.schedule"
+                                        [nzLabel]="time.schedule">
+                                    </nz-option>
+                                </nz-select>
+                            </div>
+                            <div class="col-12">
+                                <button nz-button nzType="primary" class=" m-3 d-block ml-auto">Réserver !</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="offset-2 col-4 bg-white rounded-lg px-0">
+                    <h5 class="mx-3 my-3">Mes créneaux</h5>
+                    <div class="row mx-05 pb-05" style="max-height: 400px;overflow-y: scroll;">
+                        <div class="col-12 mt-2 bg-grey rounded-lg p-2" *ngFor="let booking of myBookings?.coming">
+                            <h6 class="float-left mb-0">Réservation #{{booking.id}}</h6>
+                            <nz-tag [nzColor]="'purple'" class="float-right">{{booking?.status?.libelle}}</nz-tag>
+                            <br/>
+                            <small class="text-muted">Créé {{booking.created_at_diff}}</small>
+                            <p *ngIf="!booking.order_id" class="mt-2 text-muted">Aucune commande n'a été enregistrée pour cette réservation, cette réservation en sera pas active tant qu'aucune commande de plus de 20€ lui sera associée.</p>
+                            <small class="text-muted float-left mt-4">{{booking.schedule_diff}}</small>
+                            <button nz-button nzType="primary" class=" m-3 d-block ml-auto">Commander</button>
+                        </div>
+                        <div class="col-12 mt-2 bg-grey rounded-lg p-2" *ngFor="let booking of myBookings?.past">
+                            <h6 class="float-left">Réservation #{{booking.id}}</h6>
+                            <nz-tag [nzColor]="'green'" class="float-right">Terminée</nz-tag>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

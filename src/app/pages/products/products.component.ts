@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/core/products.service';
+import { ProductsService } from 'src/app/core/products.service'; 
 import { NzModalService } from 'ng-zorro-antd';
 import { PanierModalComponent } from './panier-modal/panier-modal.component';
 
@@ -14,8 +14,13 @@ export class ProductsComponent implements OnInit {
     private modalService : NzModalService) { }
 
   products;
+  error = false;
+   
   async ngOnInit() {
-    this.products = await this.productService.getAllProducts().toPromise();
+    this.products = await this.productService.getAllProducts().toPromise()
+      .catch(err => {
+        this.error = err.error.error;
+      });
   }
 
   openPanierModal(panier){
