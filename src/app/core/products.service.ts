@@ -9,8 +9,9 @@ export class ProductsService {
 
   constructor(private http : HttpClient) { }
 
-  getAllProducts(){
-    return this.http.post(`${environment.apiUrl}products`, {});
+  getAllProducts(schedule : any = false){
+    const obj = schedule ? {date : schedule.substring(0,10)} : {}; 
+    return this.http.post(`${environment.apiUrl}products`, obj);
   }
 }
  

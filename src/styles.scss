@@ -29,6 +29,15 @@ body {
 .pointer{
     cursor: pointer;
 }
+.rounded-lg{
+    border-radius:10px !important;
+}
+
+.ant-btn-primary[disabled] {
+    color: #fff;
+    background-color: #b8c1ff !important;
+    border-color: #b8c1ff;
+}
 ::-webkit-scrollbar {
     width: 5px; 
 }

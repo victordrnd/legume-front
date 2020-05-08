@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-panier-modal',
+  selector: 'page-panier-modal',
   templateUrl: './panier-modal.component.html',
   styleUrls: ['./panier-modal.component.scss']
 })

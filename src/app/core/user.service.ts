@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { BehaviorSubject, throwError } from "rxjs";
 import { distinctUntilChanged, map, catchError } from "rxjs/operators";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: "root",
@@ -17,7 +18,8 @@ export class UserService {
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
 
   public permissions: Array<any>;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private router : Router) {}
 
   async populate() {
     if (this.getToken()) {
@@ -35,6 +37,7 @@ export class UserService {
       }
     } else {
       this.purgeAuth();
+      this.router.navigate(['connexion']);
       return false;
     }
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { BookingService } from "../../../core/booking.service";
+import { BookingService } from "../../../../core/booking.service";
 
 @Component({
   selector: "app-bookings-table",

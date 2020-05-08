@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UserService } from "../../core/user.service";
 
 @Component({
-  selector: "app-register",
+  selector: "page-register",
   templateUrl: "./register.component.html",
   styleUrls: ["./register.component.scss"],
 })

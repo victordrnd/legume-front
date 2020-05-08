@@ -1,0 +1,13 @@
+<div class="row bg-grey mx-0 pb-5"> 
+    <div class="col-md-10 col mx-auto d-block mt-5">
+        <h1 class="bold text-center">Ma commande</h1>
+        <div class="row mt-4">
+            <div class="col px-5" *ngIf="booking">
+                <page-products-table [orderMode]="true" [booking]="booking"></page-products-table>
+            </div>
+            <div class="col-4">
+                <dashboard-order-summary></dashboard-order-summary>
+            </div>
+        </div>
+    </div>
+</div>
