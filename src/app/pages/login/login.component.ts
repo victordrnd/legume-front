@@ -13,15 +13,15 @@ export class LoginComponent implements OnInit {
     password: "",
   };
   passwordVisible = false;
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   async ngOnInit() {
     let currentUser = await this.userService.currentUser.toPromise();
   }
 
   async attempsLogin() {
-    const user: any = await this.userService
-      .attemptAuth(this.credentials)
-      .toPromise();
+    const user: any = await this.userService.attemptAuth(this.credentials)
+      .toPromise()
+      .then();
   }
 }

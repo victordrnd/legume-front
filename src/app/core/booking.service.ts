@@ -24,4 +24,8 @@ export class BookingService {
   getMyBookings(){
     return this.http.get(`${environment.apiUrl}booking/my`)
   }
+
+  createBooking(obj){
+    return this.http.post(`${environment.apiUrl}booking/book`, obj);
+  }
 }

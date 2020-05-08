@@ -5,6 +5,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { InformationsComponent } from './pages/informations/informations.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { BookingComponent } from './pages/booking/booking.component';
+import { OrderComponent } from './pages/order/order.component';
 
 const routes: Routes = [
   {
@@ -25,7 +27,20 @@ const routes: Routes = [
   },
   {
     path : "dashboard",
-    component : DashboardComponent
+    children :[
+      {
+        path : '',
+        component : DashboardComponent
+      },
+      {
+        path : 'reservations',
+        component : BookingComponent
+      },
+      {
+        path : 'commander',
+        component : OrderComponent
+      }
+    ]
   } 
 ];
 

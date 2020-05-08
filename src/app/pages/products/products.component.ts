@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/core/products.service'; 
-import { NzModalService } from 'ng-zorro-antd';
-import { PanierModalComponent } from './panier-modal/panier-modal.component';
+
 
 @Component({
   selector: 'app-products',
@@ -10,26 +8,14 @@ import { PanierModalComponent } from './panier-modal/panier-modal.component';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private productService : ProductsService,
-    private modalService : NzModalService) { }
+  constructor() { }
 
-  products;
-  error = false;
+
    
   async ngOnInit() {
-    this.products = await this.productService.getAllProducts().toPromise()
-      .catch(err => {
-        this.error = err.error.error;
-      });
+
   }
 
-  openPanierModal(panier){
-    this.modalService.create({
-      nzComponentParams : {
-        panier : panier
-      },
-      nzContent : PanierModalComponent
-    })
-  }
+
 
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://legume-back.herokuapp.com/api/",
+  apiUrl: "http://localhost:8000/api/",
 };
 
 /*

@@ -27,12 +27,15 @@ import { PanierModalComponent } from './pages/products/panier-modal/panier-modal
 import { InformationsComponent } from './pages/informations/informations.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HttpTokenInterceptor } from './core/interceptors/http.token.interceptor';
+import { OrderComponent } from './pages/order/order.component';
+import { OrderSummaryComponent } from './pages/order/order-summary/order-summary.component';
+import { ProductsTableComponent } from './pages/products/products-table/products-table.component';
 
 registerLocaleData(localeFr, 'fr-FR');
 
 @NgModule({
   
-  declarations: [AppComponent, HeaderComponent, FooterComponent, LoginComponent, RegisterComponent, HomeComponent,HeroComponent, AboutComponent, DriveComponent, BookingComponent, BookingsTableComponent, CreateBookingModalComponent, ProductsComponent, PanierModalComponent, InformationsComponent, DashboardComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, LoginComponent, RegisterComponent, HomeComponent,HeroComponent, AboutComponent, DriveComponent, BookingComponent, BookingsTableComponent, CreateBookingModalComponent, ProductsComponent, PanierModalComponent, InformationsComponent, DashboardComponent, OrderComponent, OrderSummaryComponent, ProductsTableComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

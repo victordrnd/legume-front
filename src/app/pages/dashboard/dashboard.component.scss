@@ -2,9 +2,7 @@
     background-color : #f8f9fb;
 }
 
-.bg-grey{
-    background-color : #f8f9fb;
-}
+
 .mx-05{
     margin-right:0.5rem;
     margin-left: 0.5rem;
@@ -14,4 +12,11 @@
 }
 .rounded-lg{
     border-radius:10px !important;
+}
+
+
+.ant-btn-primary[disabled] {
+    color: #fff;
+    background-color: #b8c1ff !important;
+    border-color: #b8c1ff;
 }
