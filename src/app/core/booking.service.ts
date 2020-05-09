@@ -12,12 +12,12 @@ export class BookingService {
 
   getAllBooking(per_page = 15, page = 1): Observable<any> {
     return this.http.get(
-      `${environment.apiUrl}/booking/all?per_page=${per_page}&page=${page}`
+      `${environment.apiUrl}booking/all?per_page=${per_page}&page=${page}`
     );
   }
 
   getById(id) {
-    return this.http.get(`${environment.apiUrl}/booking/${id}`);
+    return this.http.get(`${environment.apiUrl}booking/${id}`);
   }
 
 

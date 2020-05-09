@@ -20,6 +20,9 @@ body {
 .bold {
     font-family: "AvertaBold";
 }
+.normal{
+    font-family: "Averta";
+}
 .text-primary {
     color: #909cff !important;
 }
@@ -44,6 +47,14 @@ body {
 ::-webkit-scrollbar-thumb {
     background: rgba(144,156,255,0.3);
     border-radius: 10px;
+}
+
+.mx-05{
+    margin-right:0.5rem;
+    margin-left: 0.5rem;
+}
+.pb-05{
+    padding-bottom: 0.5rem;
 }
 
 

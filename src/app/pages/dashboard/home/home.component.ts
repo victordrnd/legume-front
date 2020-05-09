@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
 
 
   goToOrder(booking){
-    this.router.navigate(['dashboard/commander'], {state : {booking : booking}});
+    this.router.navigate([`dashboard/commander/${booking.id}`], {state : {booking : booking}});
   }
 
 }

@@ -22,7 +22,7 @@ const routes : Routes = [
         component : BookingComponent
       },
       {
-        path : 'commander',
+        path : 'commander/:id',
         component : OrderComponent
       }
     ]

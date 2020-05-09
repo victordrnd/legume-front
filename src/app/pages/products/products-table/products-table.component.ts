@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd';
 import { ProductsService } from 'src/app/core/products.service';
 import { PanierModalComponent } from '../panier-modal/panier-modal.component';
+import { QuantityModalComponent } from '../../dashboard/order/quantity-modal/quantity-modal.component';
+
 
 @Component({
   selector: 'page-products-table',
@@ -17,6 +19,8 @@ export class ProductsTableComponent implements OnInit {
   @Input() booking = {
     schedule : false
   };
+
+  @Output() change = new EventEmitter();
   products;
   error = false;
    
@@ -33,6 +37,19 @@ export class ProductsTableComponent implements OnInit {
         panier : panier
       },
       nzContent : PanierModalComponent
+    })
+  }
+
+
+  openQuantityModal(item){
+    this.modalService.create({
+      nzContent : QuantityModalComponent,
+      nzComponentParams : {
+        item : item
+      },
+      nzOnOk : (event) => {
+        this.change.emit(event.item);
+      }
     })
   }
 }

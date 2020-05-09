@@ -1,6 +1,6 @@
 <h1 class="bold text-center mt-5">Connexion</h1>
 <div class="row mx-0">
-  <div class="col-md-4 col mx-auto d-block">
+  <div class="col-md-4 col mx-auto d-block" *ngIf="form">
     <form [formGroup]="form" nz-form (ngSubmit)="attempsLogin()">
       <label>Adresse email : </label>
       <nz-form-item>
