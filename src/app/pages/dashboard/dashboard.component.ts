@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ScheduleService } from 'src/app/core/schedule.service';
-import { BookingService } from 'src/app/core/booking.service';
-import { NzNotificationService } from 'ng-zorro-antd';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/core/user.service';
 
 @Component({
   selector: 'dashboard-dashboard',
@@ -10,12 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor() { }
+  constructor(public router: Router,
+    private userService: UserService) { }
 
   async ngOnInit() {
+    window.scroll(0, 0);
 
   }
 
-
+  logout() {
+    this.userService.purgeAuth();
+    this.router.navigate(['']);
+  }
 
 }

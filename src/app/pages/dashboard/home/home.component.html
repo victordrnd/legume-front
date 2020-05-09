@@ -43,15 +43,15 @@
                                     <nz-tag [nzColor]="'purple'" class="float-right">{{booking?.status?.libelle}}
                                     </nz-tag>
                                     <br />
-                                    <small class="text-muted">Créée {{booking.created_at_diff}}</small>
-                                    <p *ngIf="!booking.order_id" class="mt-2 text-muted">Aucune commande n'a été
+                                    <small class="text-muted float-left">Créée {{booking.created_at_diff}}</small>
+                                    <p *ngIf="!booking.order_id" class="mt-2 text-muted float-left">Aucune commande n'a été
                                         enregistrée
                                         pour cette réservation, cette réservation en sera pas active tant qu'aucune
                                         commande de
                                         plus de 20€ lui sera associée.</p>
-                                    <small class="text-muted float-left mt-4">{{booking.schedule_diff}}</small>
+                                    <small class="text-muted float-right mt-4">{{booking.schedule_diff}}</small>
                                     <button nz-button nzType="primary" *ngIf="booking.status.slug == 'waiting'"
-                                        (click)="goToOrder(booking)" class=" m-3 d-block ml-auto">Commander</button>
+                                        (click)="goToOrder(booking)" class=" m-3 d-block ml-auto float-left">Commander</button>
                                 </div>
                                 <div class="col-12 mt-2 bg-grey rounded-lg p-2"
                                     *ngFor="let booking of myBookings?.past | slice:0:2">

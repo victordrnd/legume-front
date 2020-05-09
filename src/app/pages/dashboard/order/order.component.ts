@@ -11,17 +11,17 @@ import { BookingService } from 'src/app/core/booking.service';
 export class OrderComponent implements OnInit {
   booking;
   state;
-  constructor(private router : Router,
-     private activatedRoute : ActivatedRoute,
-     private bookingService : BookingService) { }
+  constructor(private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private bookingService: BookingService) { }
 
 
   ngOnInit() {
     this.state = this.activatedRoute.paramMap.pipe(map(() => window.history.state))
     this.state.subscribe(async res => {
-      if(res.booking){
+      if (res.booking) {
         this.booking = res.booking
-      }else{
+      } else {
         this.booking = await this.bookingService.getById(this.activatedRoute.snapshot.paramMap.get('id')).toPromise();
       }
     });
@@ -29,16 +29,14 @@ export class OrderComponent implements OnInit {
 
 
 
-  updateOrder(item){
-    console.log(item);
-    if(this.booking["order"] == null){
+  updateOrder(item) {
+    if (this.booking["order"] == null) {
       this.booking.order = {
         items: [],
-        total_price : 0
+        total_price: 0
       }
     }
     this.booking.order.items.push(item);
     this.booking.order.total_price += (item.quantity * item.price);
-    console.log(this.booking);
   }
 }

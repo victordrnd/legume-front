@@ -1,5 +1,8 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { OrderService } from 'src/app/core/order.service';
+import { NzNotificationService, NzModalService } from 'ng-zorro-antd';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dashboard-order-summary',
@@ -16,14 +19,39 @@ export class OrderSummaryComponent implements OnInit {
 
   booking;
 
-  constructor() { }
+  constructor(private orderService: OrderService,
+    private modalService: NzModalService,
+    private notificationService: NzNotificationService,
+    private router: Router) { }
 
   ngOnInit(): void {
-  
+
   }
 
+  async processOrder() {
+    const obj = {
+      booking_id: this.booking.id,
+      items: this.booking.order.items
+    }
+    await this.orderService.createOrder(obj).toPromise().then(res => {
+      this.modalService.success({
+        nzTitle : "Félicitations",
+        nzContent : "Votre commande a correctement été enregistrée.",
+        nzOnOk : () => {
+          this.router.navigate(['/dashboard']);
+        }
+      });
+    })
+      .catch(err => {
+        this.notificationService.error("Erreur", "Une erreur est survenue lors du processus de commande, veuillez réessayer plus tard.");
+      })
+  }
 
-
+  delete(item){
+    this.booking.order.total_price -= item.price * item.quantity;
+    const index = this.booking.order.items.findIndex(value => (value.id == item.id && value.type == item.type));
+    this.booking.order.items.splice(index, 1); 
+  }
 
 
   //Dynamics
