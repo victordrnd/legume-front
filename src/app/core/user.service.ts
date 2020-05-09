@@ -19,7 +19,7 @@ export class UserService {
 
   public permissions: Array<any>;
   constructor(private http: HttpClient,
-    private router : Router) {}
+    private router: Router) { }
 
   async populate() {
     if (this.getToken()) {
@@ -61,7 +61,10 @@ export class UserService {
   }
 
   addUser(user: any): any {
-    return this.http.post(`${environment.apiUrl}auth/signup`, user);
+    return this.http.post(`${environment.apiUrl}auth/signup`, user).pipe(map((res: any) => {
+      this.setAuth(res);
+      return res;
+    }))
   }
 
   purgeAuth() {

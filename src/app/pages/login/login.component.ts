@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UserService } from 'src/app/core/user.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NzNotificationService } from 'ng-zorro-antd';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   passwordVisible = false;
   constructor(private fb: FormBuilder,private userService: UserService,
-    private router : Router) { }
+    private router : Router,
+    private notificationService : NzNotificationService) { }
 
   async ngOnInit() {
     if(await this.userService.populate()){
@@ -33,6 +35,8 @@ export class LoginComponent implements OnInit {
       .toPromise()
       .then(res => {
         this.router.navigate(['dashboard'])
+      }).catch(err => {
+        this.notificationService.error("Erreur", "Les identifiants ne sont pas reconnus");
       });
   }
 
