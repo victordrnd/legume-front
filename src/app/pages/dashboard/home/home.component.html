@@ -11,7 +11,7 @@
                             <p class="mx-4">Sélectionnez un créneau horaire :</p>
                         </div>
                         <div class="col">
-                            <nz-select [(ngModel)]="selectedDate" class="mx-auto d-block w-75">
+                            <nz-select [(ngModel)]="selectedDate" class="mx-auto d-block w-75" (ngModelChange)="selectedTime = null">
                                 <nz-option *ngFor="let date of availability | keyvalue" [nzValue]="date.key"
                                     nzLabel="{{date.key | date:'EEEE d MMMM'}}"></nz-option>
                             </nz-select>
