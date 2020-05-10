@@ -10,7 +10,7 @@ import { ProductsComponent } from './products/products.component';
 import { PanierModalComponent } from './products/panier-modal/panier-modal.component';
 import { InformationsComponent } from './informations/informations.component';
 import { ProductsTableComponent } from './products/products-table/products-table.component';
-import { NgZorroAntdModule, NzSelectModule, NzButtonModule, NzTagModule, NzTableModule, NzTimelineModule, NzFormModule, NzInputModule, NzIconModule } from 'ng-zorro-antd';
+import { NgZorroAntdModule, NzSelectModule, NzButtonModule, NzTagModule, NzTableModule, NzTimelineModule, NzFormModule, NzInputModule, NzIconModule, NzSpinModule } from 'ng-zorro-antd';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -33,7 +33,8 @@ import { ContactComponent } from './contact/contact.component';
     NzTimelineModule,
     NzFormModule,
     NzInputModule,
-    NzIconModule
+    NzIconModule,
+    NzSpinModule
   ],
   entryComponents : [
     PanierModalComponent

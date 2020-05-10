@@ -1,0 +1,53 @@
+<div class="pt-5">
+    <h1 class="bold text-center">Mon profil</h1>
+    <div class="row mx-0">
+        <div class="col-4 d-block mx-auto bg-white rounded-lg p-3 mt-4" *ngIf="form">
+            <form [formGroup]="form" nz-form>
+                <label>Prénom : </label>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Le prénom est requis">
+                        <nz-input-group nzPrefixIcon="user">
+                            <input type="text" nz-input placeholder="Saisissez votre prénom"
+                                formControlName="firstname" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <label class="mt-2">Nom : </label>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Le nom est requis">
+                        <nz-input-group nzPrefixIcon="user">
+                            <input type="text" nz-input placeholder="Saisissez votre nom" formControlName="lastname" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <label class="mt-2">Adresse email : </label>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="L'adresse email est invalide">
+                        <nz-input-group nzPrefixIcon="mail">
+                            <input type="email" nz-input disabled="true" placeholder="Saisissez votre adresse mail"
+                                formControlName="email" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <label class="mt-2">Téléphone : </label>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Le numéro de téléphone est incorrect">
+                        <nz-input-group nzPrefixIcon="phone">
+                            <input type="text" nz-input placeholder="Saisissez votre numéro de téléphone"
+                                formControlName="phone" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control>
+                        <button nz-button nzType="primary" [disabled]="!form.valid" class="mt-3 ml-auto d-block"
+                            (click)="save()">
+                            Sauvegarder
+                        </button>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+        </div>
+    </div>
+
+</div>

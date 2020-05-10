@@ -12,21 +12,25 @@ import { NzNotificationService } from 'ng-zorro-antd';
 })
 export class ContactComponent implements OnInit {
 
-  formContact: FormGroup;
+  form: FormGroup;
 
-  constructor(private fb: FormBuilder,private userService: UserService, private router : Router, private notificationService : NzNotificationService) {
+  constructor(private fb: FormBuilder) {
 
   }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      email: [null, [Validators.required, Validators.email]],
+      message: [null, [Validators.required]],
+    });
   }
 
   get email(){
-    return this.formContact.controls.email
+    return this.form.controls.email
   }
 
   get message() { 
-    return this.formContact.controls.message
+    return this.form.controls.message
   }
 
 

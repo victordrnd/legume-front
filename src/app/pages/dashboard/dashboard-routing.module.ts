@@ -5,6 +5,10 @@ import { DashboardComponent } from './dashboard.component';
 import { BookingComponent } from './booking/booking.component';
 import { OrderComponent } from './order/order.component';
 import { HomeComponent } from '../dashboard/home/home.component';
+import { ProfilComponent } from './profil/profil.component';
+import { ImportComponent } from './settings/import/import.component';
+import { UsersManagementComponent } from './settings/users-management/users-management.component';
+import { NgxPermissionsGuard } from 'ngx-permissions';
 
 
 const routes : Routes = [
@@ -24,6 +28,32 @@ const routes : Routes = [
       {
         path : 'commander/:id',
         component : OrderComponent
+      },
+      {
+        path : 'profil',
+        component : ProfilComponent
+      },
+      {
+        path : 'settings/import',
+        component : ImportComponent,
+        canActivate : [NgxPermissionsGuard],
+        data : {
+          permissions : {
+            only : ['administrator'],
+            redirectTo : 'dashboard'
+          }
+        }
+      },
+      {
+        path : 'settings/users',
+        component : UsersManagementComponent,
+        canActivate : [NgxPermissionsGuard],
+        data : {
+          permissions : {
+            only : ['administrator'],
+            redirectTo : 'dashboard'
+          }
+        }
       }
     ]
   },

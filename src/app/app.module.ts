@@ -16,7 +16,8 @@ import { HttpTokenInterceptor } from './core/interceptors/http.token.interceptor
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
-registerLocaleData(localeFr, 'fr-FR');
+import { NgxPermissionsModule } from 'ngx-permissions';
+registerLocaleData(localeFr);
 
 @NgModule({
   
@@ -31,7 +32,8 @@ registerLocaleData(localeFr, 'fr-FR');
     NzButtonModule,
     NzModalModule,
     NzNotificationModule,
-    NzIconModule
+    NzIconModule,
+    NgxPermissionsModule.forRoot()
   ],
   providers: [
     { provide: NZ_I18N, useValue: fr_FR },
