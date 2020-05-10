@@ -16,7 +16,7 @@ export class ImportComponent implements OnInit {
      private notificationService : NzNotificationService,
      private importService : ImportService) { }
   header;
-  dateFormat = "yyy-MM-dd";
+  dateFormat = "EEEE d MMMM";
   data = {
     from : new Date,
     to : new Date
@@ -30,6 +30,15 @@ export class ImportComponent implements OnInit {
     }
     this.imports = await this.importService.getAllImports().toPromise()
   }
+
+
+
+
+  async delete(impor){
+    await this.importService.delete(impor.id).toPromise();
+    this.imports = await this.importService.getAllImports().toPromise();
+  }
+
 
 
   disabledEndDate = (endValue: Date): boolean => {
@@ -49,10 +58,13 @@ export class ImportComponent implements OnInit {
   onStartChange(value){
     this.data.to = value;
   }
-  onBeforeUpload = () => {
+   onBeforeUpload = () => {
     this.dataOnSend.from = this.formatDate(this.data.from);
     this.dataOnSend.to = this.formatDate(this.data.to);
     this.notificationService.success("Succès", "L'import a correctement été traité");
+    setTimeout(async () => {
+      this.imports = await this.importService.getAllImports().toPromise();
+    }, 500)
   }
 
   formatDate(date) {

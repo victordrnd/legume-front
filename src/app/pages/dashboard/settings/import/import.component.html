@@ -31,7 +31,7 @@
             <h5 class="m-3">Historique des imports <small class="normal float-right" style="font-size: 12px">(Les imports sont automatiquement supprimés à leur expiration)</small></h5>
             <div class="row mx-05">
                 <div class="col-12 bg-grey mt-2 rounded-lg" *ngFor="let import of imports">
-                    <p class="my-2">Import du <span class="text-primary">{{import.from | date}}</span> au <span class="text-primary">{{import.to | date}}</span> <small class="float-right">Importé le {{import.created_at | date}}</small></p>
+                    <p class="my-2"><button nz-button nzType="primary" class="ml-2 float-right" [nzSize]="'small'" (click)="delete(import)"> <i nz-icon nzType="delete"></i> </button> Import du <span class="text-primary">{{import.from | date}}</span> au <span class="text-primary">{{import.to | date}}</span>  <small class="float-right"> Importé le {{import.created_at | date}} </small> </p>
                 </div>
             </div>
         </div>

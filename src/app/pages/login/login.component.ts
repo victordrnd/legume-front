@@ -13,25 +13,28 @@ import { NzNotificationService } from 'ng-zorro-antd';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   passwordVisible = false;
-  constructor(private fb: FormBuilder,private userService: UserService,
-    private router : Router,
-    private notificationService : NzNotificationService) { }
+  loading = true;
+  constructor(private fb: FormBuilder, private userService: UserService,
+    private router: Router,
+    private notificationService: NzNotificationService) {
+    this.userService.getCurrentUser().subscribe(user => {
+      if (user) {
+        this.router.navigate(['dashboard']);
+      }
+    })
+  }
 
   async ngOnInit() {
-    if(await this.userService.populate()){
-      this.router.navigate(['dashboard']);
-    };
     this.form = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
       remember: [true]
     });
-
-
+    this.loading = false;
   }
 
   async attempsLogin() {
-    const user: any = await this.userService.attemptAuth(this.form.value)
+    await this.userService.attemptAuth(this.form.value)
       .toPromise()
       .then(res => {
         this.router.navigate(['dashboard'])
@@ -42,11 +45,11 @@ export class LoginComponent implements OnInit {
 
 
 
-  get email(){
+  get email() {
     return this.form.controls.email
   }
 
-  get password(){
+  get password() {
     return this.form.controls.password
   }
 }

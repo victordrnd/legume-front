@@ -12,4 +12,9 @@ export class ImportService {
   getAllImports(){
     return this.http.get(`${environment.apiUrl}import`);
   }
+
+
+  delete(id){
+    return this.http.delete(`${environment.apiUrl}import?id=${id}`);
+  }
 }
