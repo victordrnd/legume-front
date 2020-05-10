@@ -15,10 +15,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { PageRoutingModule } from './page-routing.module';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, HomeComponent,HeroComponent, AboutComponent, DriveComponent, ProductsComponent, PanierModalComponent, InformationsComponent,  ProductsTableComponent ],
+  declarations: [LoginComponent, RegisterComponent, HomeComponent,HeroComponent, AboutComponent, DriveComponent, ProductsComponent, PanierModalComponent, InformationsComponent,  ProductsTableComponent, ContactComponent ],
   imports: [
     CommonModule,
     PageRoutingModule,
