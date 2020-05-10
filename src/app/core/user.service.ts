@@ -42,6 +42,11 @@ export class UserService {
     }
   }
 
+
+  getCurrentUser() {
+    return this.http.get(`${environment.apiUrl}auth/current`)
+  }
+
   async setAuth({ user, token }: any) {
     if (token) {
       this.saveToken(token);
@@ -71,6 +76,10 @@ export class UserService {
     this.destroyToken();
     this.currentUserSubject.next({});
     this.isAuthenticatedSubject.next(false);
+  }
+
+  updateUser(obj){
+    this.http.put(`${environment.apiUrl}auth/user/update`, obj);
   }
 
   private formatErrors(error: any) {

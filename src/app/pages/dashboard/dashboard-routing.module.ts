@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard.component';
 import { BookingComponent } from './booking/booking.component';
 import { OrderComponent } from './order/order.component';
 import { HomeComponent } from '../dashboard/home/home.component';
+import { ProfilComponent } from './profil/profil.component';
 
 
 const routes : Routes = [
@@ -24,6 +25,10 @@ const routes : Routes = [
       {
         path : 'commander/:id',
         component : OrderComponent
+      },
+      {
+        path : 'profil',
+        component : ProfilComponent
       }
     ]
   },

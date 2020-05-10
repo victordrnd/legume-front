@@ -14,11 +14,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { HomeComponent } from './home/home.component';
 import { QuantityModalComponent } from './order/quantity-modal/quantity-modal.component';
+import { ProfilComponent } from './profil/profil.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, OrderComponent, OrderSummaryComponent, BookingComponent, OrderSummaryComponent, CreateBookingModalComponent, BookingsTableComponent, HomeComponent, QuantityModalComponent],
+  declarations: [DashboardComponent, OrderComponent, OrderSummaryComponent, BookingComponent, OrderSummaryComponent, CreateBookingModalComponent, BookingsTableComponent, HomeComponent, QuantityModalComponent, ProfilComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
