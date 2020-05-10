@@ -1,0 +1,40 @@
+<div class="pt-5">
+    <h1 class="bold text-center">Import des produits</h1>
+    <div class="row mx-0">
+        <div class="col-10 d-block mx-auto bg-white rounded-lg p-4">
+            <div class="row">
+                <div class="col-6">
+                    <label>Date de début d'application :</label><br/>
+                    <nz-date-picker [(ngModel)]="data.from" (ngModelChange)="onStartChange($event)" [nzDisabledDate]="disabledStartDate" [nzFormat]="dateFormat" class="w-100"></nz-date-picker>
+                </div>
+                <div class="col-6 px-5">
+                    <label>Date de fin d'application :</label><br/>
+                    <nz-date-picker [(ngModel)]="data.to" [nzDisabledDate]="disabledEndDate" [nzFormat]="dateFormat" class="w-100"></nz-date-picker> 
+                </div>
+                <div class="col-12 mt-4">
+                    <nz-upload nzType="drag" [nzMultiple]="false" nzLimit="1" [nzBeforeUpload]="onBeforeUpload" [nzShowButton]="true"
+                        nzAccept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                        [nzHeaders]="header" nzAction="{{environnement.apiUrl}}import/new"
+                        [nzData]="dataOnSend">
+                        <p class="ant-upload-drag-icon">
+                            <i nz-icon nzType="inbox"></i>
+                        </p>
+                        <p class="ant-upload-text">Cliquez ou déposez le fichier Excel dans cette zone</p>
+                        <p class="ant-upload-hint">
+                            Pensez à vérifier qu'aucune ligne ne contiennent d'erreurs (case vide, etc)</p>
+                    </nz-upload>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-10 d-block mx-auto bg-white rounded-lg pb-05 pt-1 mt-5 px-0">
+            <h5 class="m-3">Historique des imports <small class="normal float-right" style="font-size: 12px">(Les imports sont automatiquement supprimés à leur expiration)</small></h5>
+            <div class="row mx-05">
+                <div class="col-12 bg-grey mt-2 rounded-lg" *ngFor="let import of imports">
+                    <p class="my-2">Import du <span class="text-primary">{{import.from | date}}</span> au <span class="text-primary">{{import.to | date}}</span> <small class="float-right">Importé le {{import.created_at | date}}</small></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

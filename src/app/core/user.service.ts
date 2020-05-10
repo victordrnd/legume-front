@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { BehaviorSubject, throwError } from "rxjs";
 import { distinctUntilChanged, map, catchError } from "rxjs/operators";
-import { Router } from '@angular/router';
+import { NgxPermissionsService } from 'ngx-permissions';
 
 @Injectable({
   providedIn: "root",
@@ -19,7 +19,7 @@ export class UserService {
 
   public permissions: Array<any>;
   constructor(private http: HttpClient,
-    private router: Router) { }
+    private permissionService : NgxPermissionsService) { }
 
   async populate() {
     if (this.getToken()) {
@@ -27,7 +27,7 @@ export class UserService {
         const res: any = await this.http
           .get(`${environment.apiUrl}auth/current`)
           .toPromise();
-        this.setAuth(res);
+        this.setAuth({user : res});
         this.isAuthenticatedSubject.next(true);
         return true;
       } catch (error) {
@@ -37,7 +37,6 @@ export class UserService {
       }
     } else {
       this.purgeAuth();
-      this.router.navigate(['connexion']);
       return false;
     }
   }
@@ -51,6 +50,7 @@ export class UserService {
     if (token) {
       this.saveToken(token);
     }
+    this.permissionService.loadPermissions([user.role.slug]);
     this.currentUserSubject.next(user);
     this.isAuthenticatedSubject.next(true);
   }

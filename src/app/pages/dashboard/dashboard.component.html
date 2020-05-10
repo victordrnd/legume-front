@@ -8,11 +8,10 @@
                     <li nz-menu-item routerLink="/dashboard/reservations" [nzSelected]="router.url == '/dashboard/reservations'">Afficher toutes mes commandes</li>
                     <li nz-menu-item>Annuler une commande</li>
                 </ul>
-            <li nz-submenu nzTitle="Réglages" nzIcon="setting">
+            <li nz-submenu nzTitle="Réglages" nzIcon="setting" nzOpen *ngxPermissionsOnly="['administrator']">
                 <ul>
-                    <li nz-menu-item>A venir</li>
-                    <li nz-menu-item>Option 12</li>
-                    <li nz-menu-item>Option 13</li>
+                    <li nz-menu-item routerLink="/dashboard/settings/import" [nzSelected]="router.url == '/dashboard/settings/import'">Import des produits</li>
+                    <li nz-menu-item routerLink="/dashboard/settings/users" [nzSelected]="router.url == '/dashboard/settings/users'">Gestion des utilisateurs</li>
                 </ul>
             </li>
             <li nz-submenu nzTitle="Mon profil" nzIcon="user" nzOpen>
