@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ScheduleService } from 'src/app/core/schedule.service';
 import { BookingService } from 'src/app/core/booking.service';
 import { NzNotificationService } from 'ng-zorro-antd';
-import { Router } from '@angular/router';
+import { Router, RouteReuseStrategy } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
     private bookingService : BookingService,
     private notificationService : NzNotificationService,
     private router: Router) { }
+
 
   selectedTime;
   selectedDate;
