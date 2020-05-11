@@ -25,19 +25,19 @@
     <nz-modal [(nzVisible)]="visible" nzTitle="Menu" nzCancelText="Cancel" nzFooter="null" nzClosable="true" (nzOnCancel)="visible = !visible">
       <ul class="navbar-nav mr-auto text-center mt-5">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/">Accueil</a>
+          <a class="nav-link" routerLink="/" (click)="visible = !visible">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/products">Produits</a>
+          <a class="nav-link" routerLink="/products" (click)="visible = !visible">Produits</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">Informations</a>
+          <a class="nav-link" routerLink="/informations" (click)="visible = !visible">Informations</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">Contact</a>
+          <a class="nav-link" routerLink="/contact" (click)="visible = !visible">Contact</a>
         </li>
       </ul> 
-        <button nz-button nzType="primary" routerLink="dashboard"  class="mx-auto d-block my-5"><i nz-icon nzType="user" nzTheme="outline"></i>Espace
+        <button nz-button nzType="primary" routerLink="dashboard"  class="mx-auto d-block my-5" (click)="visible = !visible"><i nz-icon nzType="user" nzTheme="outline"></i>Espace
           client</button>
     </nz-modal>
     <br />

@@ -13,3 +13,19 @@
 li{
     outline : 0
 }
+
+[nz-menu] {
+    height : 100%;
+}
+::ng-deep{
+
+    .ant-layout-sider-zero-width-trigger {
+        background-color : #909cff;
+    }
+    .ant-layout-sider-zero-width-trigger:hover {
+        background: #b8c1ff;
+    }
+    .anticon-bars{
+        transform: translateY(-6px);
+    }
+}

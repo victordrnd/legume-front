@@ -6,7 +6,7 @@ import { OrderSummaryComponent } from './order/order-summary/order-summary.compo
 import { BookingComponent } from './booking/booking.component';
 import { CreateBookingModalComponent } from './booking/create-booking-modal/create-booking-modal.component';
 import { BookingsTableComponent } from './booking/bookings-table/bookings-table.component';
-import { NzSelectModule, NzTagModule, NzFormModule, NzModalModule, NzListModule, NzMenuModule, NgZorroAntdModule, NzTableModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzInputModule, NzSliderModule, NzGridModule, NzEmptyModule, NzToolTipModule, NzUploadModule, NzDatePickerModule } from 'ng-zorro-antd';
+import { NzSelectModule, NzTagModule, NzFormModule, NzModalModule, NzListModule, NzMenuModule, NgZorroAntdModule, NzTableModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzInputModule, NzSliderModule, NzGridModule, NzEmptyModule, NzToolTipModule, NzUploadModule, NzDatePickerModule, NzPopconfirmModule, NzLayoutModule } from 'ng-zorro-antd';
 import { RouterModule, RouteReuseStrategy } from '@angular/router';
 import { PageModule } from '../page.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -43,6 +43,7 @@ import { CacheReuseStrategy } from 'src/app/core/strategies/CacheReuseStrategy.s
     NzEmptyModule,
     NzDatePickerModule,
     NzUploadModule,
+    NzLayoutModule,
     NgxPermissionsModule.forChild()
   ],
   bootstrap: [DashboardComponent],

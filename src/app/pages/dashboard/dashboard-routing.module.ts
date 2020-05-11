@@ -25,9 +25,6 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
-        data : {
-          shouldReuse : true
-        }
       },
       {
         path: 'reservations',
@@ -39,7 +36,10 @@ const routes: Routes = [
       },
       {
         path: 'profil',
-        component: ProfilComponent
+        component: ProfilComponent,
+        data : {
+          reUse : true
+        }
       },
       {
         path: 'settings/import',

@@ -17,6 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { RouteReuseStrategy } from '@angular/router';
+import { CacheReuseStrategy } from './core/strategies/CacheReuseStrategy.strategy';
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -39,6 +41,7 @@ registerLocaleData(localeFr);
     { provide: NZ_I18N, useValue: fr_FR },
     {provide: LOCALE_ID, useValue: 'fr-FR'},
     {provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true},
+    {provide : RouteReuseStrategy, useClass : CacheReuseStrategy}
   ],
   bootstrap: [AppComponent]
 })

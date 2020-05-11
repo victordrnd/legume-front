@@ -19,7 +19,10 @@ const routes : Routes = [
       },
       {
         path : 'products',
-        component : ProductsComponent
+        component : ProductsComponent,
+        data : {
+          reUse : true
+        }
       },
       {
         path : 'informations',

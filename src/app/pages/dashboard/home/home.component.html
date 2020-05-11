@@ -3,7 +3,7 @@
 <div class="row mt-4 mx-0">
     <div class="col-12 d-block mx-auto">
         <div class="row">
-            <div class="mx-auto d-block col-5 px-0">
+            <div class="mx-md-auto d-block col-md-5 mx-3 px-0">
                 <div class="bg-white rounded-lg pb-05 pt-1">
                     <h5 class="mx-3 my-3">Réserver un créneau drive</h5>
                     <div *ngIf="selectedDate" class="row bg-grey mx-05 rounded-lg mb-05">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mx-auto d-block col-5 bg-white rounded-lg px-0">
+            <div class="mx-md-auto d-block col-md-5 mx-3 bg-white rounded-lg px-0 mt-5 mt-md-0">
                 <h5 class="mx-3 my-3">Mes créneaux à venir</h5>
                 <div class="row mx-05 pb-05" style="max-height: 65vh;overflow-y: scroll;" *ngIf="myBookings?.coming">
                     <div class="col-12 mt-2 bg-grey rounded-lg p-2"

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { UserService } from 'src/app/core/user.service';
-import { NzNotificationService } from 'ng-zorro-antd';
+import { NzNotificationService, NzModalService } from 'ng-zorro-antd';
 import { ImportService } from 'src/app/core/import.service';
 
 @Component({
@@ -13,15 +13,16 @@ export class ImportComponent implements OnInit {
   environnement = environment;
   uploading: boolean;
   constructor(private userService: UserService,
-     private notificationService : NzNotificationService,
-     private importService : ImportService) { }
+    private notificationService: NzNotificationService,
+    private importService: ImportService,
+    private modalService: NzModalService) { }
   header;
   dateFormat = "EEEE d MMMM";
   data = {
-    from : new Date,
-    to : new Date
+    from: new Date,
+    to: new Date
   }
-  dataOnSend : any = {};
+  dataOnSend: any = {};
   imports;
 
   async ngOnInit() {
@@ -34,9 +35,15 @@ export class ImportComponent implements OnInit {
 
 
 
-  async delete(impor){
-    await this.importService.delete(impor.id).toPromise();
-    this.imports = await this.importService.getAllImports().toPromise();
+  delete(impor) {
+    this.modalService.confirm({
+      nzTitle: "Voulez vous supprimer cet import ?",
+      nzContent: "Cela aura pour effet de vider les commandes contenants les produits importés",
+      nzOnOk: async () => {
+        await this.importService.delete(impor.id).toPromise();
+        this.imports = await this.importService.getAllImports().toPromise();
+      }
+    })
   }
 
 
@@ -55,10 +62,10 @@ export class ImportComponent implements OnInit {
     return endValue.getTime() <= new Date().getTime();
   };
 
-  onStartChange(value){
+  onStartChange(value) {
     this.data.to = value;
   }
-   onBeforeUpload = () => {
+  onBeforeUpload = () => {
     this.dataOnSend.from = this.formatDate(this.data.from);
     this.dataOnSend.to = this.formatDate(this.data.to);
     this.notificationService.success("Succès", "L'import a correctement été traité");
@@ -69,15 +76,15 @@ export class ImportComponent implements OnInit {
 
   formatDate(date) {
     var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
 
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
+    if (month.length < 2)
+      month = '0' + month;
+    if (day.length < 2)
+      day = '0' + day;
 
     return [year, month, day].join('-');
-}
+  }
 }
