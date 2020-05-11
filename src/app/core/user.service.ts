@@ -79,7 +79,7 @@ export class UserService {
   }
 
   updateUser(obj){
-    this.http.put(`${environment.apiUrl}auth/user/update`, obj);
+    return this.http.put(`${environment.apiUrl}auth/user/update`, obj);
   }
 
   private formatErrors(error: any) {

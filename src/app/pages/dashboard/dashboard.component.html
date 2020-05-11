@@ -5,8 +5,8 @@
                     nzType="home" nzTheme="outline"></i>Tableau de bord</li>
             <li nz-submenu nzTitle="Mes commandes" nzIcon="shopping" nzOpen>
                 <ul>
-                    <li nz-menu-item routerLink="/dashboard/reservations" [nzSelected]="router.url == '/dashboard/reservations'">Afficher toutes mes commandes</li>
-                    <li nz-menu-item>Annuler une commande</li>
+                    <li nz-menu-item [nzDisabled]="true" [nzSelected]="router.url == '/dashboard/reservations'">Afficher toutes mes commandes</li>
+                    <li nz-menu-item [nzDisabled]="true">Annuler une commande</li>
                 </ul>
             <li nz-submenu nzTitle="Réglages" nzIcon="setting" nzOpen *ngxPermissionsOnly="['administrator']">
                 <ul>
@@ -17,7 +17,7 @@
             <li nz-submenu nzTitle="Mon profil" nzIcon="user" nzOpen>
                 <ul>
                     <li nz-menu-item routerLink="/dashboard/profil" [nzSelected]="router.url == '/dashboard/profil'">Afficher mon profil</li>
-                    <li nz-menu-item>Réinitialiser mon mot de passe</li>
+                    <li nz-menu-item [nzDisabled]="true">Réinitialiser mon mot de passe</li>
                     <li nz-menu-item (click)="logout()">Déconnexion
                     </li>
                 </ul>

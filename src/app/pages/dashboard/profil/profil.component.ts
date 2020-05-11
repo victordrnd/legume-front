@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/user.service';
+import { NzNotificationService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-profil',
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/core/user.service';
 export class ProfilComponent implements OnInit {
   form;
   user;
-  constructor(private fb: FormBuilder, private userService: UserService) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private notificationService: NzNotificationService) { }
 
   async ngOnInit() {
     this.user = await this.userService.getCurrentUser().toPromise();
@@ -24,8 +25,10 @@ export class ProfilComponent implements OnInit {
   }
 
 
-  save() {
-
+  async save() {
+    await this.userService.updateUser(this.form.value).toPromise()
+      .then(res => this.notificationService.success("Succès", "Les informations de votre profil ont été mises à jour"))
+      .catch(err => this.notificationService.error("Erreur", "Une erreur est survenue lors de la mise à jour, veuillez vérifier les informations saisies"));
   }
 
 
