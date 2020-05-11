@@ -47,6 +47,5 @@ import { CacheReuseStrategy } from 'src/app/core/strategies/CacheReuseStrategy.s
   ],
   bootstrap: [DashboardComponent],
   exports: [RouterModule, QuantityModalComponent],
-  providers : [{ provide: RouteReuseStrategy, useClass: CacheReuseStrategy }]
 })
 export class DashboardModule { }

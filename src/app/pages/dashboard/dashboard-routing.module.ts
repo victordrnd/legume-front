@@ -18,7 +18,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     data: {
       permissions: {
-        redirectTo: '/connexion'
+        redirectTo: 'connexion'
       }
     },
     children: [
