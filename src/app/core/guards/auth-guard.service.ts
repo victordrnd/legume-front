@@ -8,18 +8,16 @@ import { NzNotificationService } from 'ng-zorro-antd';
 })
 export class AuthGuardService implements CanActivate {
 
-  constructor(private router: Router, private userService: UserService, private notificationService : NzNotificationService) { }
+  constructor(private router: Router, private userService: UserService, private notificationService: NzNotificationService) { }
 
-  async canActivate() {
-    try {
-      const result = await this.userService.populate();
-      if (!result) {
-        this.notificationService.warning("Erreur authentification", "Cet espace n'est accessible qu'une fois authentifié")
-        this.router.navigate(['connexion']);
-      }
-      return result;
-    } catch (error) {
-
+  canActivate() {
+    const result = this.userService.getToken();
+    if (!result) {
+      this.notificationService.warning("Erreur authentification", "Cet espace n'est accessible qu'une fois authentifié")
+      //this.router.navigate(['connexion']);
+      return false;
     }
+    return true;
+
   }
 }

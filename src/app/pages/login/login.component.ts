@@ -16,13 +16,7 @@ export class LoginComponent implements OnInit {
   loading = true;
   constructor(private fb: FormBuilder, private userService: UserService,
     private router: Router,
-    private notificationService: NzNotificationService) {
-    this.userService.getCurrentUser().subscribe(user => {
-      if (user) {
-        this.router.navigate(['dashboard']);
-      }
-    })
-  }
+    private notificationService: NzNotificationService) {}
 
   async ngOnInit() {
     this.form = this.fb.group({

@@ -11,47 +11,52 @@ import { UsersManagementComponent } from './settings/users-management/users-mana
 import { NgxPermissionsGuard } from 'ngx-permissions';
 
 
-const routes : Routes = [
+const routes: Routes = [
   {
-    path : '',
-    component : DashboardComponent,
-    canActivate : [AuthGuardService],
-    children :[
+    path: '',
+    component: DashboardComponent,
+    canActivate: [AuthGuardService],
+    data: {
+      permissions: {
+        redirectTo: '/connexion'
+      }
+    },
+    children: [
       {
-        path : '',
-        component : HomeComponent
+        path: '',
+        component: HomeComponent
       },
       {
-        path : 'reservations',
-        component : BookingComponent
+        path: 'reservations',
+        component: BookingComponent
       },
       {
-        path : 'commander/:id',
-        component : OrderComponent
+        path: 'commander/:id',
+        component: OrderComponent
       },
       {
-        path : 'profil',
-        component : ProfilComponent
+        path: 'profil',
+        component: ProfilComponent
       },
       {
-        path : 'settings/import',
-        component : ImportComponent,
-        canActivate : [NgxPermissionsGuard],
-        data : {
-          permissions : {
-            only : ['administrator'],
-            redirectTo : 'dashboard'
+        path: 'settings/import',
+        component: ImportComponent,
+        canActivate: [NgxPermissionsGuard],
+        data: {
+          permissions: {
+            only: ['administrator'],
+            redirectTo: 'dashboard'
           }
         }
       },
       {
-        path : 'settings/users',
-        component : UsersManagementComponent,
-        canActivate : [NgxPermissionsGuard],
-        data : {
-          permissions : {
-            only : ['administrator'],
-            redirectTo : 'dashboard'
+        path: 'settings/users',
+        component: UsersManagementComponent,
+        canActivate: [NgxPermissionsGuard],
+        data: {
+          permissions: {
+            only: ['administrator'],
+            redirectTo: '/dashboard'
           }
         }
       }
