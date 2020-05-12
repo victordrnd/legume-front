@@ -23,8 +23,15 @@ export class ProductsTableComponent implements OnInit {
   @Output() change = new EventEmitter();
   products;
   error = false;
-   
+  mobile;
   async ngOnInit() {
+    if (navigator.userAgent.match(/Android/i)
+      || navigator.userAgent.match(/webOS/i)
+      || navigator.userAgent.match(/iPhone/i)
+      || navigator.userAgent.match(/iPad/i)
+      || navigator.userAgent.match(/iPod/i)){
+      this.mobile = true;
+    }
     this.products = await this.productService.getAllProducts(this.booking.schedule).toPromise()
       .catch(err => {
         this.error = err.error.error;
