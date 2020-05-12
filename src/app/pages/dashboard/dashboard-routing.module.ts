@@ -23,9 +23,12 @@ const routes: Routes = [
     },
     children: [
       {
-        path: '',
+        path: 'home',
         component: HomeComponent,
-      },
+        data : {
+          reUse : true
+        }
+      }, 
       {
         path: 'reservations',
         component: BookingComponent
@@ -36,10 +39,7 @@ const routes: Routes = [
       },
       {
         path: 'profil',
-        component: ProfilComponent,
-        data : {
-          reUse : true
-        }
+        component: ProfilComponent
       },
       {
         path: 'settings/import',
@@ -49,7 +49,7 @@ const routes: Routes = [
           permissions: {
             only: ['administrator'],
             redirectTo: 'dashboard'
-          }
+          },
         }
       },
       {

@@ -1,4 +1,6 @@
-.sticky{
-    position: sticky;
-    top:50px;
+::ng-deep{
+    .sticky{
+        position: sticky;
+        top:50px;
+    }
 }

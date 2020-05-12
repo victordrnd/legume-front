@@ -5,7 +5,7 @@
     <thead>
         <tr class="bold">
             <th>Nom</th>
-            <th class="d-none d-md-block">Origine</th>
+            <th class="d-none d-md-table-cell">Origine</th>
             <th>Catégorie</th>
             <th>Unité</th>
             <th>Prix</th>
@@ -16,7 +16,7 @@
         <tr *ngFor="let panier of products.paniers">
             <td class="bold">{{ panier.libelle }} <i nz-icon class="text-primary pointer" nzType="question-circle"
                     nzTheme="outline" (click)="openPanierModal(panier)"></i></td>
-            <td class="d-none d-md-block">France</td>
+            <td class="d-none d-md-table-cell">France</td>
             <td>Panier</td>
             <td>{{ panier.unit }}</td>
             <td>{{ panier.price | currency:'EUR'}}</td>
@@ -25,7 +25,7 @@
         </tr>
         <tr *ngFor="let product of products.products">
             <td class="bold">{{ product.libelle }}</td>
-            <td class="d-none d-md-block">{{ product.origin }}</td>
+            <td class="d-none d-md-table-cell">{{ product.origin }}</td>
             <td>{{product.category.libelle}}</td>
             <td>{{ product.unit }}</td>
             <td>{{ product.price | currency:'EUR'}}</td>
