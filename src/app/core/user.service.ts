@@ -97,4 +97,15 @@ export class UserService {
   destroyToken() {
     localStorage.removeItem("token");
   }
+
+
+
+  getAllUser(keyword = ""){
+    return this.http.get(`${environment.apiUrl}user?keyword=${keyword}`)
+  }
+
+
+  getAllRole(){
+    return this.http.get(`${environment.apiUrl}user/roles`); 
+  }
 }

@@ -1,3 +1,50 @@
 <div class="pt-5">
     <h1 class="bold text-center">Gestion des utilisateurs</h1>
+    <div class="row mx-0">
+        <div class="col-md-10 mx-auto d-block mx-4">
+            <div class="bg-white rounded-lg pt-3 pb-05">
+                <h5 class="m-3">Filtres</h5>
+                <div class="bg-grey mx-05 p-2 rounded-lg">
+                    <nz-input-group class="w-25" [nzSuffix]="suffixIconSearch">
+                        <input type="text" [(ngModel)]="keyword" (input)="search()" nz-input placeholder="Rechercher ..." />
+                    </nz-input-group>
+                    <ng-template #suffixIconSearch>
+                        <i nz-icon nzType="search"></i>
+                    </ng-template>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 mx-md-auto d-block mx-4 mt-4">
+            <nz-table #basicTable [nzData]="users">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.lastname}}</td>
+                        <td>{{user.firstname}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>
+                            <nz-select nzAllowClear="false" nzBorderless="true" [(ngModel)]="user.role.slug">
+                                <nz-option *ngFor="let role of roles" [nzLabel]="role.libelle" [nzValue]="role.slug"></nz-option>
+                            </nz-select>
+                        </td>
+                        <td>
+                            <a>Action 一</a>
+                            <a>Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
 </div>

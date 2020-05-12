@@ -10,12 +10,13 @@
                         Afficher toutes mes commandes</li>
                     <li nz-menu-item [nzDisabled]="true">Annuler une commande</li>
                 </ul>
-            <li nz-submenu nzTitle="Réglages" nzIcon="setting" nzOpen *ngxPermissionsOnly="['administrator']">
+            <li nz-submenu nzTitle="Administration" nzIcon="setting" nzOpen *ngxPermissionsOnly="['administrator']">
                 <ul>
                     <li nz-menu-item routerLink="/dashboard/settings/import"
                         [nzSelected]="router.url == '/dashboard/settings/import'">Import des produits</li>
                     <li nz-menu-item routerLink="/dashboard/settings/users"
                         [nzSelected]="router.url == '/dashboard/settings/users'">Gestion des utilisateurs</li>
+                    <li nz-menu-item routerLink="/dashboard/settings/users">Ecran des commandes</li>
                 </ul>
             </li>
             <li nz-submenu nzTitle="Mon profil" nzIcon="user" nzOpen>
