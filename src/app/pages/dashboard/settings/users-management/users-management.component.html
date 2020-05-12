@@ -34,8 +34,8 @@
                         <td>{{user.email}}</td>
                         <td>{{user.phone}}</td>
                         <td>
-                            <nz-select nzAllowClear="false" nzBorderless="true" [(ngModel)]="user.role.slug">
-                                <nz-option *ngFor="let role of roles" [nzLabel]="role.libelle" [nzValue]="role.slug"></nz-option>
+                            <nz-select nzAllowClear="false" nzBorderless="true" [(ngModel)]="user.role.id" (ngModelChange)="updateRole($event, user)">
+                                <nz-option *ngFor="let role of roles" [nzLabel]="role.libelle" [nzValue]="role.id"></nz-option>
                             </nz-select>
                         </td>
                         <td>

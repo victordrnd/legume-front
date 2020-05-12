@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { NzModalService } from 'ng-zorro-antd';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { NzModalService, NzTableComponent } from 'ng-zorro-antd';
 import { ProductsService } from 'src/app/core/products.service';
 import { PanierModalComponent } from '../panier-modal/panier-modal.component';
 import { QuantityModalComponent } from '../../dashboard/order/quantity-modal/quantity-modal.component';
@@ -52,4 +52,5 @@ export class ProductsTableComponent implements OnInit {
       }
     })
   }
+
 }

@@ -108,4 +108,9 @@ export class UserService {
   getAllRole(){
     return this.http.get(`${environment.apiUrl}user/roles`); 
   }
+
+
+  updateRole(obj){
+    return this.http.put(`${environment.apiUrl}user/role`, obj);
+  }
 }

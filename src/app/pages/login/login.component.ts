@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     await this.userService.attemptAuth(this.form.value)
       .toPromise()
       .then(res => {
-        this.router.navigate(['dashboard'])
+        this.router.navigate(['/dashboard/home'])
       }).catch(err => {
         this.notificationService.error("Erreur", "Les identifiants ne sont pas reconnus");
       });

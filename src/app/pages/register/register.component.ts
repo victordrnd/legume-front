@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
     const user: any = await this.userService.addUser(this.form.value)
       .toPromise()
       .then(res => {
-        this.router.navigate(['dashboard'])
+        this.router.navigate(['/dashboard/home'])
       });
 
   }
