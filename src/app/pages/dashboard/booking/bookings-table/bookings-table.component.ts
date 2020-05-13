@@ -16,7 +16,7 @@ export class BookingsTableComponent implements OnInit {
 
   async getAllBookings() {
     const bookings: any = await this.bookingService
-      .getAllBooking(this.per_page, this.page)
+      .getAllBookings(this.per_page, this.page)
       .toPromise();
   }
   async getBookingById(id) {
