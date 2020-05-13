@@ -1,14 +1,16 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { AuthGuardService } from "src/app/core/guards/auth-guard.service";
-import { DashboardComponent } from "./dashboard.component";
-import { BookingComponent } from "./booking/booking.component";
-import { OrderComponent } from "./order/order.component";
-import { HomeComponent } from "../dashboard/home/home.component";
-import { ProfilComponent } from "./profil/profil.component";
-import { ImportComponent } from "./settings/import/import.component";
-import { UsersManagementComponent } from "./settings/users-management/users-management.component";
-import { NgxPermissionsGuard } from "ngx-permissions";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AuthGuardService } from 'src/app/core/guards/auth-guard.service';
+import { DashboardComponent } from './dashboard.component';
+import { BookingComponent } from './booking/booking.component';
+import { OrderComponent } from './order/order.component';
+import { HomeComponent } from '../dashboard/home/home.component';
+import { ProfilComponent } from './profil/profil.component';
+import { ImportComponent } from './settings/import/import.component';
+import { UsersManagementComponent } from './settings/users-management/users-management.component';
+import { NgxPermissionsGuard } from 'ngx-permissions';
+import { PaymentComponent } from './payment/payment.component';
+import { OrderManagementComponent } from './settings/order-management/order-management.component';
 
 const routes: Routes = [
   {
@@ -25,8 +27,8 @@ const routes: Routes = [
         path: "home",
         component: HomeComponent,
         data: {
-          reUse: true,
-        },
+          reUse: true
+        }
       },
       {
         path: "reservations",
@@ -37,34 +39,44 @@ const routes: Routes = [
         component: OrderComponent,
       },
       {
-        path: "profil",
-        component: ProfilComponent,
+        path: 'payment',
+        component: PaymentComponent
       },
       {
-        path: "settings/import",
-        component: ImportComponent,
+        path: 'profil',
+        component: ProfilComponent
+      },
+      {
+        path: 'settings',
         canActivate: [NgxPermissionsGuard],
         data: {
           permissions: {
-            only: ["administrator"],
-            redirectTo: "dashboard",
+            only: ['administrator'],
+            redirectTo: '/dashboard/home'
           },
         },
-      },
-      {
-        path: "settings/users",
-        component: UsersManagementComponent,
-        canActivate: [NgxPermissionsGuard],
-        data: {
-          permissions: {
-            only: ["administrator"],
-            redirectTo: "/dashboard",
+        children: [
+          {
+            path: 'import',
+            component: ImportComponent,
           },
-        },
+          {
+            path: 'users',
+            component: UsersManagementComponent,
+          },
+          {
+            path: 'orders',
+            component: OrderManagementComponent
+          }
+        ]
       },
     ],
   },
-];
+  {
+    path: "**",
+    redirectTo : '/dashboard/home'
+  }
+]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

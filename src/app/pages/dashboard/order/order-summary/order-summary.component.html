@@ -2,13 +2,13 @@
     <h5 class="bold mx-3 my-3">Résumé de ma commande</h5>
     <div class="row mx-05  mb-05 cart">
         <div class="col-12 rounded-lg bg-grey mt-2 p-2" *ngFor="let item of booking?.order?.items">
-            <button nz-button nzType="primary" [nzSize]="'small'" (click)="delete(item)"><i nz-icon nzType="delete"></i></button> {{item.quantity}} x {{item.libelle}} 
-            <span class="float-right bold">{{item.quantity * item.price | currency:'EUR'}} </span>
+            <button nz-button nzType="primary" [nzSize]="'small'" (click)="delete(item)" *ngIf="!paymentMode" ><i nz-icon nzType="delete"></i></button> {{item.quantity}} x {{item.libelle}} 
+            <span class="float-right bold">{{item.quantity * (item.price) | currency:'EUR'}} </span>
         </div>
     </div>
     <div class="col-12 mt-4" *ngIf="booking?.order">
-        <h6 class="bold">Total : <small class="text-muted normal">(min: 20€)</small> <span class="float-right bold">{{booking.order.total_price | currency:'EUR'}}</span></h6>
-        <button nz-button nzType="primary" [disabled]="booking.order.total_price < 20" class="w-100" (click)="processOrder()">Terminer ma commande</button>
+        <h6 class="bold">Total : <small class="text-muted normal" *ngIf="!paymentMode">(min: 20€)</small> <span class="float-right bold">{{booking.order.total_price | currency:'EUR'}}</span></h6>
+        <button nz-button nzType="primary" *ngIf="!paymentMode" [disabled]="booking.order.total_price < 20" class="w-100" (click)="processOrder()">Procéder au paiement</button>
     </div>
     <nz-empty nzNotFoundImage="simple" nzNotFoundContent="Aucun article n'a été ajouté" class="bg-grey rounded-lg" *ngIf="!booking?.order"></nz-empty>
 </div>
