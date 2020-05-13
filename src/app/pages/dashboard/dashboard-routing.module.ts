@@ -10,6 +10,7 @@ import { ImportComponent } from './settings/import/import.component';
 import { UsersManagementComponent } from './settings/users-management/users-management.component';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 import { PaymentComponent } from './payment/payment.component';
+import { OrderManagementComponent } from './settings/order-management/order-management.component';
 
 
 const routes: Routes = [
@@ -26,10 +27,10 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
-        data : {
-          reUse : true
+        data: {
+          reUse: true
         }
-      }, 
+      },
       {
         path: 'reservations',
         component: BookingComponent
@@ -39,37 +40,43 @@ const routes: Routes = [
         component: OrderComponent
       },
       {
-        path : 'payment',
-        component : PaymentComponent
+        path: 'payment',
+        component: PaymentComponent
       },
       {
         path: 'profil',
         component: ProfilComponent
       },
       {
-        path: 'settings/import',
-        component: ImportComponent,
+        path: 'settings',
         canActivate: [NgxPermissionsGuard],
         data: {
           permissions: {
             only: ['administrator'],
-            redirectTo: 'dashboard'
+            redirectTo: '/dashboard/home'
           },
-        }
-      },
-      {
-        path: 'settings/users',
-        component: UsersManagementComponent,
-        canActivate: [NgxPermissionsGuard],
-        data: {
-          permissions: {
-            only: ['administrator'],
-            redirectTo: '/dashboard'
+        },
+        children: [
+          {
+            path: 'import',
+            component: ImportComponent,
+          },
+          {
+            path: 'users',
+            component: UsersManagementComponent,
+          },
+          {
+            path: 'orders',
+            component: OrderManagementComponent
           }
-        }
-      }
-    ]
+        ]
+      },
+    ],
   },
+  {
+    path: "**",
+    redirectTo : '/dashboard/home'
+  }
 ]
 
 @NgModule({

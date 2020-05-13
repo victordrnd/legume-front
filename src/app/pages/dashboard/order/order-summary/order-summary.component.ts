@@ -19,7 +19,7 @@ export class OrderSummaryComponent implements OnInit {
 
   booking;
   @Input() paymentMode = false;
-  
+
   constructor(private orderService: OrderService,
     private modalService: NzModalService,
     private notificationService: NzNotificationService,
@@ -35,18 +35,7 @@ export class OrderSummaryComponent implements OnInit {
       items: this.booking.order.items
     }
     this.router.navigate(['/dashboard/payment'], {state : {booking : this.booking}});
-    // await this.orderService.createOrder(obj).toPromise().then(res => {
-    //   this.modalService.success({
-    //     nzTitle : "Félicitations",
-    //     nzContent : "Votre commande a correctement été enregistrée.",
-    //     nzOnOk : () => {
-    //       this.router.navigate(['/dashboard/home']);
-    //     }
-    //   });
-    // })
-    //   .catch(err => {
-    //     this.notificationService.error("Erreur", "Une erreur est survenue lors du processus de commande, veuillez réessayer plus tard.");
-    //   })
+    // 
   }
 
   delete(item){

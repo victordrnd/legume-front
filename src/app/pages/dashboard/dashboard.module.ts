@@ -19,11 +19,12 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { ImportComponent } from './settings/import/import.component';
 import { UsersManagementComponent } from './settings/users-management/users-management.component';
 import { PaymentComponent } from './payment/payment.component';
+import { OrderManagementComponent } from './settings/order-management/order-management.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, OrderComponent, OrderSummaryComponent, BookingComponent, OrderSummaryComponent, CreateBookingModalComponent, BookingsTableComponent, HomeComponent, QuantityModalComponent, ProfilComponent, ImportComponent, UsersManagementComponent, PaymentComponent],
+  declarations: [DashboardComponent, OrderComponent, OrderSummaryComponent, BookingComponent, OrderSummaryComponent, CreateBookingModalComponent, BookingsTableComponent, HomeComponent, QuantityModalComponent, ProfilComponent, ImportComponent, UsersManagementComponent, PaymentComponent, OrderManagementComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

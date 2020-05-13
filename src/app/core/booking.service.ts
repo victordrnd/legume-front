@@ -10,7 +10,7 @@ import { distinctUntilChanged, map, catchError } from "rxjs/operators";
 export class BookingService {
   constructor(private http: HttpClient) {}
 
-  getAllBooking(per_page = 15, page = 1): Observable<any> {
+  getAllBookings(per_page = 15, page = 1): Observable<any> {
     return this.http.get(
       `${environment.apiUrl}booking/all?per_page=${per_page}&page=${page}`
     );

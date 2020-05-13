@@ -14,4 +14,14 @@ export class PaymentService {
   }
 
 
+
+  confirmPayment(booking){
+    return this.http.post(`${environment.apiUrl}payment/confirm`, booking);
+  }
+
+  charge(booking){
+    return this.http.post(`${environment.apiUrl}payment/charge`, booking);
+  }
+
+  
 }
