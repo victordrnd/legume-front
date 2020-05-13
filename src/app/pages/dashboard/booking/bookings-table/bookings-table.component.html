@@ -1,1 +1,48 @@
-<p>bookings-table works!</p>
+<h1 class="pt-5 bold text-center">Commandes à venir</h1>
+<nz-table #basicTable [nzData]="bookings?.coming" nzShowPagination="false" [nzScroll]="{ y: '68vh' }"
+    class="rounded-lg">
+    <thead>
+        <tr>
+            <th>A récuperer</th>
+            <th>Créé</th>
+            <th>Etat</th>
+            <th class="text-center">Détail de la commande</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let booking of bookings.coming">
+            <td class="text-capitalize">{{ booking?.schedule_diff }}</td>
+            <td>{{ booking?.created_at_diff }}</td>
+            <td>{{ booking?.status.libelle }}</td>
+            <td class="text-center">
+                <button nz-button nzType="primary" nzShape="circle">
+                    <i nz-icon nzType="file-text"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>
+
+<h1 class="pt-5 bold text-center">Commandes passées</h1>
+<nz-table #basicTable [nzData]="bookings?.path" nzShowPagination="false" [nzScroll]="{ y: '68vh' }" class="rounded-lg">
+    <thead>
+        <tr>
+            <th>Récuperer le</th>
+            <th>Créé le</th>
+            <th>Etat</th>
+            <th class="text-center">Détail de la commande</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let booking of bookings?.path">
+            <td class="text-capitalize">{{ booking?.updated_at }}</td>
+            <td>{{ booking?.created_at }}</td>
+            <td>{{ booking?.status.libelle }}</td>
+            <td class="text-center">
+                <button nz-button nzType="primary" nzShape="circle" (click)="getBookingById(booking.id)">
+                    <i nz-icon nzType="file-text"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>
