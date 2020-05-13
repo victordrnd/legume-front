@@ -6,8 +6,8 @@ import { OrderSummaryComponent } from './order/order-summary/order-summary.compo
 import { BookingComponent } from './booking/booking.component';
 import { CreateBookingModalComponent } from './booking/create-booking-modal/create-booking-modal.component';
 import { BookingsTableComponent } from './booking/bookings-table/bookings-table.component';
-import { NzSelectModule, NzTagModule, NzFormModule, NzModalModule, NzListModule, NzMenuModule, NgZorroAntdModule, NzTableModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzInputModule, NzSliderModule, NzGridModule, NzEmptyModule, NzToolTipModule, NzUploadModule, NzDatePickerModule, NzPopconfirmModule, NzLayoutModule } from 'ng-zorro-antd';
-import { RouterModule, RouteReuseStrategy } from '@angular/router';
+import { NzTagModule, NzMenuModule,  NzTableModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzInputModule, NzSliderModule, NzGridModule, NzEmptyModule, NzUploadModule, NzDatePickerModule, NzLayoutModule, NzCheckboxModule } from 'ng-zorro-antd';
+import { RouterModule } from '@angular/router';
 import { PageModule } from '../page.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,12 +18,12 @@ import { ProfilComponent } from './profil/profil.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { ImportComponent } from './settings/import/import.component';
 import { UsersManagementComponent } from './settings/users-management/users-management.component';
-import { CacheReuseStrategy } from 'src/app/core/strategies/CacheReuseStrategy.strategy';
+import { PaymentComponent } from './payment/payment.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, OrderComponent, OrderSummaryComponent, BookingComponent, OrderSummaryComponent, CreateBookingModalComponent, BookingsTableComponent, HomeComponent, QuantityModalComponent, ProfilComponent, ImportComponent, UsersManagementComponent],
+  declarations: [DashboardComponent, OrderComponent, OrderSummaryComponent, BookingComponent, OrderSummaryComponent, CreateBookingModalComponent, BookingsTableComponent, HomeComponent, QuantityModalComponent, ProfilComponent, ImportComponent, UsersManagementComponent, PaymentComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -44,6 +44,7 @@ import { CacheReuseStrategy } from 'src/app/core/strategies/CacheReuseStrategy.s
     NzDatePickerModule,
     NzUploadModule,
     NzLayoutModule,
+    NzCheckboxModule,
     NgxPermissionsModule.forChild()
   ],
   bootstrap: [DashboardComponent],

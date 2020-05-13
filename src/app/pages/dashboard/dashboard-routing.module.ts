@@ -9,6 +9,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { ImportComponent } from './settings/import/import.component';
 import { UsersManagementComponent } from './settings/users-management/users-management.component';
 import { NgxPermissionsGuard } from 'ngx-permissions';
+import { PaymentComponent } from './payment/payment.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'commander/:id',
         component: OrderComponent
+      },
+      {
+        path : 'payment',
+        component : PaymentComponent
       },
       {
         path: 'profil',

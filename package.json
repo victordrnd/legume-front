@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~9.0.3",
     "@angular/platform-browser-dynamic": "~9.0.3",
     "@angular/router": "~9.0.3",
+    "@types/stripe-v3": "^3.1.17",
     "ng-zorro-antd": "^9.1.0",
     "ngx-permissions": "^7.0.3",
     "rxjs": "~6.5.4",
