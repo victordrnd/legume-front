@@ -16,10 +16,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { PageRoutingModule } from './page-routing.module';
 import { ContactComponent } from './contact/contact.component';
+import { PaniersComponent } from './home/paniers/paniers.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, HomeComponent,HeroComponent, AboutComponent, DriveComponent, ProductsComponent, PanierModalComponent, InformationsComponent,  ProductsTableComponent, ContactComponent ],
+  declarations: [LoginComponent, RegisterComponent, HomeComponent,HeroComponent, AboutComponent, DriveComponent, ProductsComponent, PanierModalComponent, InformationsComponent,  ProductsTableComponent, ContactComponent, PaniersComponent ],
   imports: [
     CommonModule,
     PageRoutingModule,
