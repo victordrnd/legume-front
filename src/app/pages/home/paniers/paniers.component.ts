@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/core/products.service';
 
 @Component({
-  selector: 'app-paniers',
+  selector: 'page-paniers',
   templateUrl: './paniers.component.html',
   styleUrls: ['./paniers.component.scss']
 })

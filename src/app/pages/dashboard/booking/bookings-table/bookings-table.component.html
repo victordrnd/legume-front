@@ -31,7 +31,7 @@
             <td>{{booking.total_price | currency : 'EUR'}}</td>
             <td><nz-tag [nzColor]="'purple'">{{booking.status?.libelle}}</nz-tag></td>
             <td>
-                <button nz-button nzType="primary" (click)="getBookingById(booking.id)">
+                <button nz-button nzType="primary">
                     <i nz-icon nzType="file-text"></i>
                 </button>
             </td>

@@ -27,6 +27,7 @@ import {
   NzDatePickerModule,
   NzPopconfirmModule,
   NzLayoutModule,
+  NzCheckboxModule,
 } from "ng-zorro-antd";
 import { RouterModule, RouteReuseStrategy } from "@angular/router";
 import { PageModule } from "../page.module";
@@ -41,6 +42,8 @@ import { ImportComponent } from "./settings/import/import.component";
 import { UsersManagementComponent } from "./settings/users-management/users-management.component";
 import { CacheReuseStrategy } from "src/app/core/strategies/CacheReuseStrategy.strategy";
 import { BookingModalComponent } from "./booking/booking-modal/booking-modal.component";
+import { PaymentComponent } from './payment/payment.component';
+import { OrderManagementComponent } from './settings/order-management/order-management.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,8 @@ import { BookingModalComponent } from "./booking/booking-modal/booking-modal.com
     ImportComponent,
     UsersManagementComponent,
     BookingModalComponent,
+    PaymentComponent,
+    OrderManagementComponent
   ],
   imports: [
     CommonModule,
@@ -77,7 +82,8 @@ import { BookingModalComponent } from "./booking/booking-modal/booking-modal.com
     NzEmptyModule,
     NzDatePickerModule,
     NzUploadModule,
-    NzLayoutModule,
+    NzLayoutModule, 
+    NzCheckboxModule,
     NgxPermissionsModule.forChild(),
   ],
   bootstrap: [DashboardComponent],
