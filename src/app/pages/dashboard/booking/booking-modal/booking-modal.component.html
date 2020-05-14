@@ -1,6 +1,12 @@
-<h4 class="bold mb-0">Détails de la commande du </h4>
+<h5 class="bold mb-0">Détail de la commande du {{ booking?.schedule | date:'EEEE d MMMM H:mm' }}</h5>
 <hr class="line" />
 <br />
-<ul class="list-unstyled">
 
+<ul nz-list [nzDataSource]="booking" nzBordered nzSize="large">
+    <li nz-list-item *ngFor="let item of booking?.order?.items" nzNoFlex>
+
+        <p>{{ item.libelle }}</p>
+
+
+    </li>
 </ul>

@@ -78,6 +78,7 @@ import { BookingModalComponent } from "./booking/booking-modal/booking-modal.com
     NzDatePickerModule,
     NzUploadModule,
     NzLayoutModule,
+    NzListModule,
     NgxPermissionsModule.forChild(),
   ],
   bootstrap: [DashboardComponent],

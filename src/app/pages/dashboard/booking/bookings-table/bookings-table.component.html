@@ -14,13 +14,16 @@
         <tr *ngFor="let booking of bookings?.coming">
             <td class="text-capitalize">{{ booking?.schedule | date:'EEEE d MMMM H:mm' }}</td>
             <td>{{ booking?.created_at | date:'EEEE d MMMM H:mm'}}</td>
-            <td>{{booking.total_price | currency : 'EUR'}}</td>
-            <td><nz-tag [nzColor]="'purple'">{{booking.status?.libelle}}</nz-tag></td>
+            <td>{{booking?.total_price | currency : 'EUR'}}</td>
             <td>
-                <button nz-button nzType="primary">
+                <nz-tag [nzColor]="'purple'">{{booking.status?.libelle}}</nz-tag>
+            </td>
+            <td>
+                <button nz-button nzType="primary" (click)="getBookingById(booking.id)">
                     <i nz-icon nzType="file-text"></i>
                 </button>
-                <button nz-button nzType="default" class="mx-3" *ngIf="booking.status?.slug == 'waiting' || booking.status?.slug == 'confirmed'">
+                <button nz-button nzType="default" class="mx-3"
+                    *ngIf="booking.status?.slug == 'waiting' || booking.status?.slug == 'confirmed'">
                     <i nz-icon nzType="close-square" nzTheme="outline"></i>
                 </button>
             </td>
@@ -28,8 +31,10 @@
         <tr *ngFor="let booking of bookings?.past">
             <td class="text-capitalize">{{ booking?.schedule | date:'EEEE d MMMM H:mm' }}</td>
             <td>{{ booking?.created_at | date:'EEEE d MMMM H:mm'}}</td>
-            <td>{{booking.total_price | currency : 'EUR'}}</td>
-            <td><nz-tag [nzColor]="'purple'">{{booking.status?.libelle}}</nz-tag></td>
+            <td>{{booking?.total_price | currency : 'EUR'}}</td>
+            <td>
+                <nz-tag [nzColor]="'purple'">{{booking.status?.libelle}}</nz-tag>
+            </td>
             <td>
                 <button nz-button nzType="primary" (click)="getBookingById(booking.id)">
                     <i nz-icon nzType="file-text"></i>

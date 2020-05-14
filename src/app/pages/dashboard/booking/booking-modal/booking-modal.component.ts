@@ -6,7 +6,9 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./booking-modal.component.scss"],
 })
 export class BookingModalComponent implements OnInit {
-  constructor() {}
+  constructor() { }
   @Input() booking;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.booking);
+  }
 }
