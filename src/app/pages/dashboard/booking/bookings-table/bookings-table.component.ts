@@ -4,7 +4,7 @@ import { BookingService } from "../../../../core/booking.service";
 import { BookingModalComponent } from "../booking-modal/booking-modal.component";
 
 @Component({
-  selector: "app-bookings-table",
+  selector: "dashboard-bookings-table",
   templateUrl: "./bookings-table.component.html",
   styleUrls: ["./bookings-table.component.scss"],
 })
@@ -22,20 +22,6 @@ export class BookingsTableComponent implements OnInit {
     this.getMyBooking();
   }
 
-  async getAllBookings() {
-    this.bookings = await this.bookingService
-      .getAllBookings(this.per_page, this.page)
-      .toPromise();
-  }
-  async getBookingById(id) {
-    const booking: any = await this.bookingService.getById(id).toPromise();
-    this.modalService.create({
-      nzComponentParams: {
-        booking: booking,
-      },
-      nzContent: BookingModalComponent,
-    });
-  }
   async getMyBooking() {
     this.bookings = await this.bookingService.getMyBookings().toPromise();
   }

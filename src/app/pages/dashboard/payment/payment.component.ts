@@ -8,7 +8,7 @@ import { OrderService } from 'src/app/core/order.service';
 import { NzModalService, NzNotificationService } from 'ng-zorro-antd';
 
 @Component({
-  selector: 'app-payment',
+  selector: 'dashboard-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss']
 })
