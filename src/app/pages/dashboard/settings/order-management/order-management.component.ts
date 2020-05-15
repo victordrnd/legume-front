@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookingService } from 'src/app/core/booking.service';
 import { NzModalService, NzNotificationService } from 'ng-zorro-antd';
 import { PaymentService } from 'src/app/core/payment.service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'dashboard-order-management',
@@ -13,7 +14,8 @@ export class OrderManagementComponent implements OnInit {
   constructor(private bookingService: BookingService,
     private modalService: NzModalService,
     private paymentService: PaymentService,
-    private notificationService: NzNotificationService) { }
+    private notificationService: NzNotificationService,
+    private currencyPipe : CurrencyPipe) { }
   bookings;
   filter = {
     per_page: 15,
@@ -26,9 +28,10 @@ export class OrderManagementComponent implements OnInit {
 
 
   payOrderCB(booking) {
+    const money = this.currencyPipe.transform(booking.order.total_price, 'EUR');
     this.modalService.confirm({
       nzTitle: "Confirmer le prélèvement",
-      nzContent: `Confirmez vous le prélèvement d'un montant de ${booking.order.total_price} € à partir des coordonnées bancaires de ${booking.user.firstname} ${booking.user.lastname} ?`,
+      nzContent: `Confirmez vous le prélèvement d'un montant de ${money} à partir des coordonnées bancaires de ${booking.user.firstname} ${booking.user.lastname} ?`,
       nzWidth: 500,
       nzOnOk: () => {
         this.paymentService.charge(booking).toPromise().then(async res => {
@@ -43,9 +46,10 @@ export class OrderManagementComponent implements OnInit {
 
 
   payCash(booking) {
+    const money = this.currencyPipe.transform(booking.order.total_price, 'EUR');
     this.modalService.confirm({
       nzTitle: "Confirmer le paiement",
-      nzContent: `Confirmez vous le paiement de ${booking.order.total_price} € de ${booking.user.firstname} ${booking.user.lastname} ?`,
+      nzContent: `Confirmez vous le paiement de ${money} de ${booking.user.firstname} ${booking.user.lastname} ?`,
       nzWidth: 500,
       nzOnOk: () => {
         this.paymentService.charge(booking).toPromise().then(async res => {

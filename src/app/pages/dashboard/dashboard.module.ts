@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { CommonModule, CurrencyPipe } from "@angular/common";
 import { DashboardComponent } from "./dashboard.component";
 import { OrderComponent } from "./order/order.component";
 import { OrderSummaryComponent } from "./order/order-summary/order-summary.component";
@@ -86,7 +86,8 @@ import { OrderManagementComponent } from './settings/order-management/order-mana
     NzCheckboxModule,
     NgxPermissionsModule.forChild(),
   ],
+  providers : [CurrencyPipe],
   bootstrap: [DashboardComponent],
-  exports: [RouterModule, QuantityModalComponent],
+  exports: [QuantityModalComponent],
 })
 export class DashboardModule { }
