@@ -44,6 +44,7 @@ import { CacheReuseStrategy } from "src/app/core/strategies/CacheReuseStrategy.s
 import { BookingModalComponent } from "./booking/booking-modal/booking-modal.component";
 import { PaymentComponent } from './payment/payment.component';
 import { OrderManagementComponent } from './settings/order-management/order-management.component';
+import { UpdateUserComponent } from './profil/update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { OrderManagementComponent } from './settings/order-management/order-mana
     UsersManagementComponent,
     BookingModalComponent,
     PaymentComponent,
-    OrderManagementComponent
+    OrderManagementComponent,
+    UpdateUserComponent
   ],
   imports: [
     CommonModule,
@@ -86,6 +88,7 @@ import { OrderManagementComponent } from './settings/order-management/order-mana
     NzCheckboxModule,
     NgxPermissionsModule.forChild(),
   ],
+  entryComponents : [UpdateUserComponent],
   providers : [CurrencyPipe],
   bootstrap: [DashboardComponent],
   exports: [QuantityModalComponent],

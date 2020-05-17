@@ -27,18 +27,23 @@ export class OrderManagementComponent implements OnInit {
   }
 
 
-  payOrderCB(booking) {
+  payOrderCB(booking, i) {
+    
     const money = this.currencyPipe.transform(booking.order.total_price, 'EUR');
     this.modalService.confirm({
       nzTitle: "Confirmer le prélèvement",
       nzContent: `Confirmez vous le prélèvement d'un montant de ${money} à partir des coordonnées bancaires de ${booking.user.firstname} ${booking.user.lastname} ?`,
       nzWidth: 500,
       nzOnOk: () => {
+        this.bookings.data[i].loading = true;
         this.paymentService.charge(booking).toPromise().then(async res => {
           this.notificationService.success("Succès", "Le client a correctement été prélevé");
           this.bookings = await this.bookingService.getAllBookings(this.filter.per_page, this.filter.page).toPromise();
         })
-          .catch(err => this.notificationService.error("Erreur", "Une erreur est survenue lors du paiement"))
+        .catch(err => {
+          this.notificationService.error("Erreur", "Une erreur est survenue lors du paiement")
+          this.bookings[i].loading = true;
+          })
       }
     });
   }

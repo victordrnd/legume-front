@@ -24,6 +24,7 @@
                         <th>Email</th>
                         <th>Téléphone</th>
                         <th>Role</th>
+                        <th>Inscription</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -38,8 +39,9 @@
                                 <nz-option *ngFor="let role of roles" [nzLabel]="role.libelle" [nzValue]="role.id"></nz-option>
                             </nz-select>
                         </td>
+                        <td>{{user.created_at | date}}</td>
                         <td>
-                            <button nz-button nzType="primary" nzSize="small"><i nz-icon nzType="edit" nzTheme="outline"></i></button> 
+                            <button nz-button nzType="primary" nzSize="small" (click)="edit(user)"><i nz-icon nzType="edit" nzTheme="outline"></i></button> 
                         </td>
                     </tr>
                 </tbody>
