@@ -5,17 +5,17 @@
             <div class="row">
                 <div class="col-md-6">
                     <label>Date de début d'application :</label><br/>
-                    <nz-date-picker [(ngModel)]="data.from" (ngModelChange)="onStartChange($event)" [nzDisabledDate]="disabledStartDate" [nzFormat]="dateFormat" class="w-100"></nz-date-picker>
+                    <nz-date-picker [(ngModel)]="data.from" (ngModelChange)="onStartChange($event)" [nzAllowClear]="false" [nzDisabledDate]="disabledStartDate" [nzFormat]="dateFormat" class="w-100"></nz-date-picker>
                 </div>
                 <div class="col-md-6 mt-4 mt-md-0">
                     <label>Date de fin d'application :</label><br/>
-                    <nz-date-picker [(ngModel)]="data.to" [nzDisabledDate]="disabledEndDate" [nzFormat]="dateFormat" class="w-100"></nz-date-picker> 
+                    <nz-date-picker [(ngModel)]="data.to" [nzDisabledDate]="disabledEndDate" [nzAllowClear]="false"	[nzFormat]="dateFormat" class="w-100"></nz-date-picker> 
                 </div>
                 <div class="col-12 mt-4">
                     <nz-upload nzType="drag" [nzMultiple]="false" nzLimit="1" [nzBeforeUpload]="onBeforeUpload" [nzShowButton]="true"
                         nzAccept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                         [nzHeaders]="header" nzAction="{{environnement.apiUrl}}import/new"
-                        [nzData]="dataOnSend">
+                        [nzData]="dataOnSend" [nzDisabled]="data.from.toString() == data.to.toString()">
                         <p class="ant-upload-drag-icon">
                             <i nz-icon nzType="inbox"></i>
                         </p>

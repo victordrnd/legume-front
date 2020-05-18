@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="col-md-10 mx-md-auto d-block mx-4 mt-4">
-            <nz-table #basicTable [nzData]="users">
+            <nz-table #basicTable [nzData]="users" [nzShowPagination]="false">
                 <thead>
                     <tr>
                         <th>Nom</th>
@@ -24,23 +24,24 @@
                         <th>Email</th>
                         <th>Téléphone</th>
                         <th>Role</th>
+                        <th>Inscription</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of users">
-                        <td>{{user.lastname}}</td>
-                        <td>{{user.firstname}}</td>
+                        <td>{{user.lastname | titlecase}}</td>
+                        <td>{{user.firstname | titlecase}}</td>
                         <td>{{user.email}}</td>
-                        <td>{{user.phone}}</td>
+                        <td>{{user.phone | phone}}</td>
                         <td>
                             <nz-select nzAllowClear="false" nzBorderless="true" [(ngModel)]="user.role.id" (ngModelChange)="updateRole($event, user)">
                                 <nz-option *ngFor="let role of roles" [nzLabel]="role.libelle" [nzValue]="role.id"></nz-option>
                             </nz-select>
                         </td>
+                        <td>{{user.created_at | date}}</td>
                         <td>
-                            <a>Action 一</a>
-                            <a>Delete</a>
+                            <button nz-button nzType="primary" nzSize="small" (click)="edit(user)"><i nz-icon nzType="edit" nzTheme="outline"></i></button> 
                         </td>
                     </tr>
                 </tbody>

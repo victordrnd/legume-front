@@ -18,9 +18,10 @@ export class ImportComponent implements OnInit {
     private modalService: NzModalService) { }
   header;
   dateFormat = "EEEE d MMMM";
+  date = new Date;
   data = {
-    from: new Date,
-    to: new Date
+    from: this.date,
+    to: this.date
   }
   dataOnSend: any = {};
   imports;
@@ -59,7 +60,7 @@ export class ImportComponent implements OnInit {
     if (!endValue) {
       return false;
     }
-    return endValue.getTime() <= new Date().getTime();
+    return endValue.getTime() <= this.date.getTime();
   };
 
   onStartChange(value) {

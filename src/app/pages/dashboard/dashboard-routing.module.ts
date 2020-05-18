@@ -25,7 +25,8 @@ const routes: Routes = [
     children: [
       {
         path: "home",
-        component: HomeComponent
+        component: HomeComponent,
+        
       },
       {
         path: "reservations",

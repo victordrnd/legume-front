@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { CommonModule, CurrencyPipe } from "@angular/common";
 import { DashboardComponent } from "./dashboard.component";
 import { OrderComponent } from "./order/order.component";
 import { OrderSummaryComponent } from "./order/order-summary/order-summary.component";
@@ -41,6 +41,8 @@ import { UsersManagementComponent } from "./settings/users-management/users-mana
 import { BookingModalComponent } from "./booking/booking-modal/booking-modal.component";
 import { PaymentComponent } from './payment/payment.component';
 import { OrderManagementComponent } from './settings/order-management/order-management.component';
+import { UpdateUserComponent } from './profil/update-user/update-user.component';
+import { PhonePipe } from 'src/app/core/pipes/phone.pipe';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { OrderManagementComponent } from './settings/order-management/order-mana
     UsersManagementComponent,
     BookingModalComponent,
     PaymentComponent,
-    OrderManagementComponent
+    OrderManagementComponent,
+    UpdateUserComponent,
+    PhonePipe
   ],
   imports: [
     CommonModule,
@@ -84,7 +88,9 @@ import { OrderManagementComponent } from './settings/order-management/order-mana
     NzDividerModule,
     NgxPermissionsModule.forChild(),
   ],
+  entryComponents : [UpdateUserComponent],
+  providers : [CurrencyPipe],
   bootstrap: [DashboardComponent],
-  exports: [RouterModule, QuantityModalComponent],
+  exports: [QuantityModalComponent],
 })
 export class DashboardModule { }
