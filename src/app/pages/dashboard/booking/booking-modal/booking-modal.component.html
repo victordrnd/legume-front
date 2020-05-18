@@ -2,11 +2,12 @@
 <hr class="line" />
 <br />
 
-<ul nz-list [nzDataSource]="booking" nzBordered nzSize="large">
-    <li nz-list-item *ngFor="let item of booking?.order?.items" nzNoFlex>
+<ul nz-list nzBordered nzSize="large">
+    <li nz-list-item *ngFor="let item of booking?.order?.items">
+        {{ item.quantity}} {{ item.libelle }} = {{ item.price * item.quantity | currency : 'EUR'}}
 
-        <p>{{ item.libelle }}</p>
-
-
+        <button nz-button nzType="primary" *ngIf="item.product.type=='App\\Panier'">
+            Détail du panier
+        </button>
     </li>
 </ul>

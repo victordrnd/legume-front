@@ -25,4 +25,25 @@ export class BookingsTableComponent implements OnInit {
   async getMyBooking() {
     this.bookings = await this.bookingService.getMyBookings().toPromise();
   }
+
+  async openBookingModal(booking) {
+    this.modalService.create({
+      nzComponentParams: {
+        booking: booking
+      },
+      nzContent: BookingModalComponent
+    })
+  }
+
+  delete(booking) {
+    this.modalService.confirm({
+      nzTitle: "Voulez vous supprimer cette commande ?",
+      nzContent: "Cela aura pour effet de vider la commande ainsi que les produits qu'elle contient.",
+      nzOnOk: async () => {
+        await this.bookingService.delete(booking.id).toPromise();
+        this.bookings = await this.bookingService.getAllBookings().toPromise();
+      }
+    })
+  }
+
 }

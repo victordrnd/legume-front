@@ -84,6 +84,7 @@ import { OrderManagementComponent } from './settings/order-management/order-mana
     NzUploadModule,
     NzLayoutModule,
     NzCheckboxModule,
+    NzListModule,
     NgxPermissionsModule.forChild(),
   ],
   bootstrap: [DashboardComponent],

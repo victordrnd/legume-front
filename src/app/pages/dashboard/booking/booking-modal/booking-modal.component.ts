@@ -8,7 +8,9 @@ import { Component, OnInit, Input } from "@angular/core";
 export class BookingModalComponent implements OnInit {
   constructor() { }
   @Input() booking;
+
+
   ngOnInit(): void {
-    console.log(this.booking);
+
   }
 }

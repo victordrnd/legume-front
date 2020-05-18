@@ -8,7 +8,7 @@ import { distinctUntilChanged, map, catchError } from "rxjs/operators";
   providedIn: "root",
 })
 export class BookingService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllBookings(per_page = 15, page = 1): Observable<any> {
     return this.http.get(
@@ -21,11 +21,15 @@ export class BookingService {
   }
 
 
-  getMyBookings(){
+  getMyBookings() {
     return this.http.get(`${environment.apiUrl}booking/my`)
   }
 
-  createBooking(obj){
+  createBooking(obj) {
     return this.http.post(`${environment.apiUrl}booking/book`, obj);
+  }
+
+  delete(id) {
+    return this.http.delete(`${environment.apiUrl}booking/${id}`);
   }
 }
