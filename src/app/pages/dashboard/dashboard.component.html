@@ -9,7 +9,7 @@
                     <li nz-menu-item routerLink="/dashboard/reservations"
                         [nzSelected]="router.url == '/dashboard/reservations'">
                         Afficher toutes mes commandes</li>
-                    <li nz-menu-item [nzDisabled]="true">Annuler une commande</li>
+                    <!-- <li nz-menu-item [nzDisabled]="true">Annuler une commande</li> -->
                 </ul>
             <li nz-submenu nzTitle="Administration" nzIcon="setting" nzOpen *ngxPermissionsOnly="['administrator']">
                 <ul>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { NzModalService, NzTableComponent } from "ng-zorro-antd";
+import { NzModalService, NzTableComponent, NzNotificationService } from "ng-zorro-antd";
 import { BookingService } from "../../../../core/booking.service";
 import { BookingModalComponent } from "../booking-modal/booking-modal.component";
+import { Router } from '@angular/router';
+import { EditOrderModalComponent } from '../../order/edit-order-modal/edit-order-modal.component';
 
 @Component({
   selector: "dashboard-bookings-table",
@@ -11,7 +13,9 @@ import { BookingModalComponent } from "../booking-modal/booking-modal.component"
 export class BookingsTableComponent implements OnInit {
   constructor(
     private bookingService: BookingService,
-    private modalService: NzModalService
+    private modalService: NzModalService,
+    private router: Router,
+    private notificationService: NzNotificationService
   ) { }
 
   private per_page = 50;
@@ -28,11 +32,33 @@ export class BookingsTableComponent implements OnInit {
 
   async openBookingModal(booking) {
     this.modalService.create({
-      nzWidth : 700,
+      nzWidth: 700,
       nzComponentParams: {
         booking: booking
       },
       nzContent: BookingModalComponent
+    })
+  }
+
+
+  editOrder(booking) {
+    this.modalService.create({
+      nzContent: EditOrderModalComponent,
+      nzTitle: "Edition de commande",
+      nzWidth: 500,
+      nzComponentParams: { booking: booking },
+      nzOnOk: (res) => {
+        console.log(res);
+        if (booking.schedule != res.selectedDate + ' ' + res.selectedTime) {
+          const obj = { date: res.selectedDate, time: res.selectedTime };
+          this.bookingService.updateSchedule(booking.id, obj).toPromise()
+            .then(async res => {
+              this.notificationService.success('Succès', "Votre commande a correctement été mise à jour");
+              this.bookings = await this.bookingService.getMyBookings().toPromise();
+            })
+            .catch(err => this.notificationService.error('Erreur', "Une erreur est survenue, réessayez plus tard"))
+        }
+      }
     })
   }
 
@@ -47,4 +73,7 @@ export class BookingsTableComponent implements OnInit {
     })
   }
 
+  goToOrder(booking) {
+    this.router.navigate([`dashboard/commander/${booking.id}`], { state: { booking: booking } });
+  }
 }

@@ -49,4 +49,9 @@ export class CacheReuseStrategy implements RouteReuseStrategy {
             return url;
         }
     }
+
+
+    clear(){
+        this.handlers =  {};
+    }
 }

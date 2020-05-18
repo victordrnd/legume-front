@@ -26,6 +26,7 @@ import {
   NzLayoutModule,
   NzCheckboxModule,
   NzDividerModule,
+  NzDropDownModule,
 } from "ng-zorro-antd";
 import { RouterModule, RouteReuseStrategy } from "@angular/router";
 import { PageModule } from "../page.module";
@@ -43,6 +44,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { OrderManagementComponent } from './settings/order-management/order-management.component';
 import { UpdateUserComponent } from './profil/update-user/update-user.component';
 import { PhonePipe } from 'src/app/core/pipes/phone.pipe';
+import { EditOrderModalComponent } from './order/edit-order-modal/edit-order-modal.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,8 @@ import { PhonePipe } from 'src/app/core/pipes/phone.pipe';
     PaymentComponent,
     OrderManagementComponent,
     UpdateUserComponent,
-    PhonePipe
+    PhonePipe,
+    EditOrderModalComponent
   ],
   imports: [
     CommonModule,
@@ -86,6 +89,7 @@ import { PhonePipe } from 'src/app/core/pipes/phone.pipe';
     NzCheckboxModule,
     NzListModule,
     NzDividerModule,
+    NzDropDownModule,
     NgxPermissionsModule.forChild(),
   ],
   entryComponents : [UpdateUserComponent],

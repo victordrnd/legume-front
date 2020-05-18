@@ -4,43 +4,53 @@
     <thead>
         <tr>
             <th>Date de retrait</th>
-            <th>Créé</th>
             <th>Montant</th>
+            <th>Moyen de paiement</th>
+            <th>Réservée le</th>
             <th>Etat</th>
-            <th class="text-center">Détail de la commande</th>
+            <th class="text-center">Action</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let booking of bookings?.coming">
             <td class="text-capitalize">{{ booking?.schedule | date:'EEEE d MMMM H:mm' }}</td>
-            <td>{{ booking?.created_at | date:'EEEE d MMMM H:mm'}}</td>
             <td>{{booking?.total_price | currency : 'EUR'}}</td>
+            <td><span *ngIf="booking?.is_cash">Espèce</span> <span *ngIf="!booking?.is_cash && booking.order">Carte bancaire</span></td>
+            <td>{{ booking?.created_at | date:'d MMMM H:mm'}}</td>
+            <td><nz-tag [nzColor]="'purple'">{{booking.status?.libelle}}</nz-tag></td>
             <td>
-                <nz-tag [nzColor]="'purple'">{{booking.status?.libelle}}</nz-tag>
-            </td>
-            <td>
-                <button nz-button nzType="primary" (click)="openBookingModal(booking)">
-                    <i nz-icon nzType="file-text"></i>
+                <button nz-button nzType="primary" nz-dropdown class="d-block mx-auto" [nzDropdownMenu]="menu4"
+                    *ngIf="booking.status.slug != 'canceled'">
+                    Menu
+                    <i nz-icon nzType="down"></i>
                 </button>
-                <button nz-button nzType="default" class="mx-3"
-                    *ngIf="booking.status?.slug == 'waiting' || booking.status?.slug == 'confirmed'"
-                    (click)="delete(booking)">
-                    <i nz-icon nzType="stop" nzTheme="outline"></i>
-                </button>
+                <nz-dropdown-menu #menu4="nzDropdownMenu">
+                    <ul nz-menu>
+                        <li nz-menu-item *ngIf="booking.status.slug =='waiting'" (click)="goToOrder(booking)"><i nz-icon
+                                class="text-primary" nzType="shopping"></i> Commander mes produits</li>
+                        <li nz-menu-item *ngIf="booking.status?.slug != 'waiting'" (click)="openBookingModal(booking)">
+                            <i nz-icon class="text-primary" nzType="file-text"></i> Détails de la commande</li>
+                        <li nz-menu-item
+                            *ngIf="booking.status?.slug == 'confirmed' || booking.status?.slug == 'waiting'"
+                            (click)="editOrder(booking)"><i nz-icon class="text-primary" nzType="edit"
+                                nzTheme="outline"></i> Modifier la commande</li>
+                        <li nz-menu-item
+                            *ngIf="booking.status?.slug == 'waiting' || booking.status?.slug == 'confirmed'"
+                            (click)="delete(booking)"><i nz-icon class="text-primary" nzType="close-circle"
+                                nzTheme="outline"></i> Annuler la commande</li>
+                    </ul>
+                </nz-dropdown-menu>
             </td>
         </tr>
         <tr *ngFor="let booking of bookings?.past">
             <td class="text-capitalize">{{ booking?.schedule | date:'EEEE d MMMM H:mm' }}</td>
-            <td>{{ booking?.created_at | date:'EEEE d MMMM H:mm'}}</td>
             <td>{{booking?.total_price | currency : 'EUR'}}</td>
+            <td><span *ngIf="booking?.is_cash">Espèce</span> <span *ngIf="!booking?.is_cash && booking.order">Carte bancaire</span></td>
+            <td>{{ booking?.created_at | date:'d MMMM H:mm'}}</td>
             <td>
                 <nz-tag [nzColor]="'purple'">{{booking.status?.libelle}}</nz-tag>
             </td>
-            <td>
-                <button nz-button nzType="primary" (click)="openBookingModal(booking)">
-                    <i nz-icon nzType="file-text"></i>
-                </button>
-            </td>
+            <td></td>
         </tr>
     </tbody>
 </nz-table>

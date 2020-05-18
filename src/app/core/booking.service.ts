@@ -32,4 +32,9 @@ export class BookingService {
   delete(id) {
     return this.http.delete(`${environment.apiUrl}booking/${id}`);
   }
+
+
+  updateSchedule(booking_id, obj) {
+    return this.http.put(`${environment.apiUrl}booking/${booking_id}/schedule`, obj);
+  }
 }

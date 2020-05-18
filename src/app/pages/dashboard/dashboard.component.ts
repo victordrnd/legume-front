@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/user.service';
+import { CacheReuseStrategy } from 'src/app/core/strategies/CacheReuseStrategy.strategy';
 
 @Component({
   selector: 'dashboard-dashboard',
@@ -24,7 +25,7 @@ export class DashboardComponent implements OnInit {
 
   logout() {
     this.userService.purgeAuth();
-    this.router.navigate(['']);
+    document.location.reload();
   }
 
 }
