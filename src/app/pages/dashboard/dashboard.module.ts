@@ -45,6 +45,7 @@ import { BookingModalComponent } from "./booking/booking-modal/booking-modal.com
 import { PaymentComponent } from './payment/payment.component';
 import { OrderManagementComponent } from './settings/order-management/order-management.component';
 import { UpdateUserComponent } from './profil/update-user/update-user.component';
+import { PhonePipe } from 'src/app/core/pipes/phone.pipe';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { UpdateUserComponent } from './profil/update-user/update-user.component'
     BookingModalComponent,
     PaymentComponent,
     OrderManagementComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    PhonePipe
   ],
   imports: [
     CommonModule,

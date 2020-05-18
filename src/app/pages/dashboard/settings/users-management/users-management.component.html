@@ -33,7 +33,7 @@
                         <td>{{user.lastname}}</td>
                         <td>{{user.firstname}}</td>
                         <td>{{user.email}}</td>
-                        <td>{{user.phone}}</td>
+                        <td>{{user.phone | phone}}</td>
                         <td>
                             <nz-select nzAllowClear="false" nzBorderless="true" [(ngModel)]="user.role.id" (ngModelChange)="updateRole($event, user)">
                                 <nz-option *ngFor="let role of roles" [nzLabel]="role.libelle" [nzValue]="role.id"></nz-option>
