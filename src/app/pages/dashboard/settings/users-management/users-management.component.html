@@ -30,8 +30,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of users">
-                        <td>{{user.lastname}}</td>
-                        <td>{{user.firstname}}</td>
+                        <td>{{user.lastname | titlecase}}</td>
+                        <td>{{user.firstname | titlecase}}</td>
                         <td>{{user.email}}</td>
                         <td>{{user.phone | phone}}</td>
                         <td>

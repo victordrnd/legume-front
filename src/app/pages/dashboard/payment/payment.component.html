@@ -19,7 +19,7 @@
                 </div>
                 <h5 class="mx-3 bold">Espèce</h5>
                 <p class="mx-3">Je préfère payer en espèce au moment de venir récupérer mes articles.</p>
-                <button nz-button nzType="primary" class="mx-3 w-75 mt-2 d-block mx-auto" (click)="payEspece()">Je paie en espèce</button>
+                <button nz-button nzType="primary" class="mx-3 w-75 mt-2 d-block mx-auto" [disabled]="loading" (click)="payEspece()">Je paie en espèce</button>
             </div>
             <div class="col-md-4 mx-05 mt-4 mt-md-0 mx-md-0">
                 <div class="sticky">
