@@ -1,13 +1,15 @@
-<h5 class="bold mb-0">Détail de la commande du {{ booking?.schedule | date:'EEEE d MMMM H:mm' }}</h5>
+<h5 class="bold mb-0">Détails de la commande du {{ booking?.schedule | date:'EEEE d MMMM H:mm' }}</h5>
 <hr class="line" />
-<br />
+<br /><br />
 
-<ul nz-list nzBordered nzSize="large">
+<ul nz-list>
     <li nz-list-item *ngFor="let item of booking?.order?.items">
-        {{ item.quantity}} {{ item.libelle }} = {{ item.price * item.quantity | currency : 'EUR'}}
-
-        <button nz-button nzType="primary" *ngIf="item.product.type=='App\\Panier'">
-            Détail du panier
-        </button>
+        <p class="w-100">{{ item.quantity}}x {{ item.libelle }}
+            <i nz-icon class="text-primary pointer" nzType="question-circle" nzTheme="outline"
+                (click)="openPanierModal(item.product)" *ngIf="item.product.type == 'App\\Panier'"></i> <span
+                class="bold float-right">{{ item.product.price * item.quantity | currency : 'EUR'}}</span></p>
     </li>
 </ul>
+<nz-divider></nz-divider>
+<h6 class="ml-auto bold">Total : <span class="float-right">{{booking?.order?.total_price | currency : 'EUR'}}</span>
+</h6>

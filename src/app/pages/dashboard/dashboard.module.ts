@@ -4,7 +4,6 @@ import { DashboardComponent } from "./dashboard.component";
 import { OrderComponent } from "./order/order.component";
 import { OrderSummaryComponent } from "./order/order-summary/order-summary.component";
 import { BookingComponent } from "./booking/booking.component";
-import { CreateBookingModalComponent } from "./booking/create-booking-modal/create-booking-modal.component";
 import { BookingsTableComponent } from "./booking/bookings-table/bookings-table.component";
 import {
   NzSelectModule,
@@ -13,7 +12,6 @@ import {
   NzModalModule,
   NzListModule,
   NzMenuModule,
-  NgZorroAntdModule,
   NzTableModule,
   NzButtonModule,
   NzIconModule,
@@ -25,9 +23,9 @@ import {
   NzToolTipModule,
   NzUploadModule,
   NzDatePickerModule,
-  NzPopconfirmModule,
   NzLayoutModule,
   NzCheckboxModule,
+  NzDividerModule,
 } from "ng-zorro-antd";
 import { RouterModule, RouteReuseStrategy } from "@angular/router";
 import { PageModule } from "../page.module";
@@ -40,7 +38,6 @@ import { ProfilComponent } from "./profil/profil.component";
 import { NgxPermissionsModule } from "ngx-permissions";
 import { ImportComponent } from "./settings/import/import.component";
 import { UsersManagementComponent } from "./settings/users-management/users-management.component";
-import { CacheReuseStrategy } from "src/app/core/strategies/CacheReuseStrategy.strategy";
 import { BookingModalComponent } from "./booking/booking-modal/booking-modal.component";
 import { PaymentComponent } from './payment/payment.component';
 import { OrderManagementComponent } from './settings/order-management/order-management.component';
@@ -52,7 +49,6 @@ import { OrderManagementComponent } from './settings/order-management/order-mana
     OrderSummaryComponent,
     BookingComponent,
     OrderSummaryComponent,
-    CreateBookingModalComponent,
     BookingsTableComponent,
     HomeComponent,
     QuantityModalComponent,
@@ -85,6 +81,7 @@ import { OrderManagementComponent } from './settings/order-management/order-mana
     NzLayoutModule,
     NzCheckboxModule,
     NzListModule,
+    NzDividerModule,
     NgxPermissionsModule.forChild(),
   ],
   bootstrap: [DashboardComponent],

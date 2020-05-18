@@ -25,10 +25,7 @@ const routes: Routes = [
     children: [
       {
         path: "home",
-        component: HomeComponent,
-        data: {
-          reUse: true
-        }
+        component: HomeComponent
       },
       {
         path: "reservations",
@@ -44,7 +41,10 @@ const routes: Routes = [
       },
       {
         path: 'profil',
-        component: ProfilComponent
+        component: ProfilComponent,
+        data: {
+          reUse: true
+        }
       },
       {
         path: 'settings',

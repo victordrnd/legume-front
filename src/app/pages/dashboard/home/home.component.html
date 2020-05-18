@@ -46,7 +46,7 @@
                             enregistrée
                             pour cette réservation, cette réservation en sera pas active tant qu'aucune
                             commande de
-                            plus de 20€ lui sera associée.</p>
+                            plus de 20€ ne lui sera associée.</p>
                         <small class="text-muted float-right mt-4">{{booking.schedule_diff}}</small>
                         <button nz-button nzType="primary" *ngIf="booking.status.slug == 'waiting'"
                             (click)="goToOrder(booking)" class=" m-3 d-block ml-auto float-left">Commander</button>
