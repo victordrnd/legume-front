@@ -3,6 +3,7 @@
     class="rounded-lg">
     <thead>
         <tr>
+            <th>#</th>
             <th>Date de retrait</th>
             <th>Montant</th>
             <th>Moyen de paiement</th>
@@ -13,6 +14,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let booking of bookings?.coming">
+            <td class="bold">#{{booking.id}}</td>
             <td class="text-capitalize">{{ booking?.schedule | date:'EEEE d MMMM H:mm' }}</td>
             <td>{{booking?.total_price | currency : 'EUR'}}</td>
             <td><span *ngIf="booking?.is_cash">Espèce</span> <span *ngIf="!booking?.is_cash && booking.order">Carte bancaire</span></td>
@@ -43,6 +45,7 @@
             </td>
         </tr>
         <tr *ngFor="let booking of bookings?.past">
+            <td class="bold">#{{booking.id}}</td>
             <td class="text-capitalize">{{ booking?.schedule | date:'EEEE d MMMM H:mm' }}</td>
             <td>{{booking?.total_price | currency : 'EUR'}}</td>
             <td><span *ngIf="booking?.is_cash">Espèce</span> <span *ngIf="!booking?.is_cash && booking.order">Carte bancaire</span></td>
