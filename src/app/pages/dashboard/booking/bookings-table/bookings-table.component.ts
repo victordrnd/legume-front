@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { NzModalService, NzTableComponent, NzNotificationService } from "ng-zorro-antd";
 import { BookingService } from "../../../../core/booking.service";
-import { BookingModalComponent } from "../booking-modal/booking-modal.component";
+import { BookingDetailsModalComponent } from "../booking-details-modal/booking-details-modal.component";
 import { Router } from '@angular/router';
-import { EditOrderModalComponent } from '../../order/edit-order-modal/edit-order-modal.component';
+import { EditBookingModalComponent } from '../edit-booking-modal/edit-booking-modal.component';
 
 @Component({
   selector: "dashboard-bookings-table",
@@ -36,17 +36,18 @@ export class BookingsTableComponent implements OnInit {
       nzComponentParams: {
         booking: booking
       },
-      nzContent: BookingModalComponent
+      nzContent: BookingDetailsModalComponent
     })
   }
 
 
   editOrder(booking) {
     this.modalService.create({
-      nzContent: EditOrderModalComponent,
+      nzContent: EditBookingModalComponent,
       nzTitle: "Edition de commande",
       nzWidth: 500,
       nzComponentParams: { booking: booking },
+      nzCloseOnNavigation : true,
       nzOnOk: (res) => {
         console.log(res);
         if (booking.schedule != res.selectedDate + ' ' + res.selectedTime) {

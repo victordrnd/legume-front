@@ -39,12 +39,12 @@ import { ProfilComponent } from "./profil/profil.component";
 import { NgxPermissionsModule } from "ngx-permissions";
 import { ImportComponent } from "./settings/import/import.component";
 import { UsersManagementComponent } from "./settings/users-management/users-management.component";
-import { BookingModalComponent } from "./booking/booking-modal/booking-modal.component";
+import { BookingDetailsModalComponent } from "./booking/booking-details-modal/booking-details-modal.component";
 import { PaymentComponent } from './payment/payment.component';
 import { OrderManagementComponent } from './settings/order-management/order-management.component';
 import { UpdateUserComponent } from './profil/update-user/update-user.component';
 import { PhonePipe } from 'src/app/core/pipes/phone.pipe';
-import { EditOrderModalComponent } from './order/edit-order-modal/edit-order-modal.component';
+import { EditBookingModalComponent } from './booking/edit-booking-modal/edit-booking-modal.component'; 
 
 @NgModule({
   declarations: [
@@ -59,12 +59,12 @@ import { EditOrderModalComponent } from './order/edit-order-modal/edit-order-mod
     ProfilComponent,
     ImportComponent,
     UsersManagementComponent,
-    BookingModalComponent,
+    BookingDetailsModalComponent,
     PaymentComponent,
     OrderManagementComponent,
     UpdateUserComponent,
     PhonePipe,
-    EditOrderModalComponent
+    EditBookingModalComponent
   ],
   imports: [
     CommonModule,
@@ -94,7 +94,7 @@ import { EditOrderModalComponent } from './order/edit-order-modal/edit-order-mod
   ],
   entryComponents : [UpdateUserComponent],
   providers : [CurrencyPipe],
-  bootstrap: [DashboardComponent],
+  bootstrap: [DashboardComponent], 
   exports: [QuantityModalComponent],
 })
 export class DashboardModule { }

@@ -1,0 +1,36 @@
+<h5 class="bold mb-0">Détails de la commande du {{ booking?.schedule | date:'EEEE d MMMM H:mm' }}</h5>
+<hr class="line" />
+<br /><br />
+
+<!-- <ul nz-list>
+    <li nz-list-item>
+        <p class="w-100 bold">Libellé <span class="float-right">Montant</span></p>
+    </li>
+    <li nz-list-item *ngFor="let item of booking?.order?.items">
+        <p class="w-100">{{ item.quantity}}x {{ item.libelle }}
+            <i nz-icon class="text-primary pointer" nzType="question-circle" nzTheme="outline"
+                (click)="openPanierModal(item.product)" *ngIf="item.product.type == 'App\\Panier'"></i> <span
+                class="bold float-right">{{ item.product.price * item.quantity | currency : 'EUR'}}</span></p>
+    </li>
+</ul> -->
+<nz-table #basicTable [nzData]="booking?.order?.items" [nzShowPagination]="false">
+    <thead>
+        <tr class="bold">
+            <th>Quantité</th>
+            <th>Produit</th>
+            <th>Catégorie</th>
+            <th>Prix</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of booking?.order?.items">
+            <td>{{item.quantity}}</td>
+            <td>{{item.libelle}} <i nz-icon class="text-primary pointer" nzType="question-circle" nzTheme="outline"
+                    (click)="openPanierModal(item.product)" *ngIf="item.product.type == 'App\\Panier'"></i></td>
+            <td>{{item.product?.category?.libelle || 'Panier'}}</td>
+            <td>{{ item.product.price * item.quantity | currency : 'EUR'}}</td>
+        </tr>
+    </tbody>
+</nz-table>
+<h6 class="ml-auto bold mt-3">Montant total : <span class="float-right">{{booking?.order?.total_price | currency : 'EUR'}}</span>
+</h6>

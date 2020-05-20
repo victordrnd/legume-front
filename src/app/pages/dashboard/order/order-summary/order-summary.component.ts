@@ -21,7 +21,6 @@ export class OrderSummaryComponent implements OnInit {
   @Input() paymentMode = false;
 
   constructor(private orderService: OrderService,
-    private modalService: NzModalService,
     private notificationService: NzNotificationService,
     private router: Router) { }
 
@@ -34,14 +33,22 @@ export class OrderSummaryComponent implements OnInit {
       booking_id: this.booking.id,
       items: this.booking.order.items
     }
-    this.router.navigate(['/dashboard/payment'], {state : {booking : this.booking}});
-    // 
+    if (this.booking.order_id) {
+      await this.orderService.updateOrderProducts(this.booking.order_id, obj).toPromise()
+        .then(res => {
+          this.notificationService.success('Succès', "Votre commande a correctement été modifiée")
+          this.router.navigate(['/dashboard/reservations']);
+        })
+        .catch(err => this.notificationService.error('Erreur', "Une erreur est survenue, réessayez plus tard"))
+    } else {
+      this.router.navigate(['/dashboard/payment'], { state: { booking: this.booking } });
+    }
   }
 
-  delete(item){
+  delete(item) {
     this.booking.order.total_price -= item.price * item.quantity;
     const index = this.booking.order.items.findIndex(value => (value.id == item.id && value.type == item.type));
-    this.booking.order.items.splice(index, 1); 
+    this.booking.order.items.splice(index, 1);
   }
 
 

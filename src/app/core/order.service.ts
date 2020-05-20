@@ -13,4 +13,9 @@ export class OrderService {
   createOrder(obj){
     return this.http.post(`${environment.apiUrl}order/create`, obj);
   }
+
+
+  updateOrderProducts(order_id, obj){
+    return this.http.put(`${environment.apiUrl}order/${order_id}/products`, obj);
+  } 
 }
