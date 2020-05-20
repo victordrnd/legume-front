@@ -5,8 +5,9 @@
             <nz-option nzLabel="{{booking.schedule.substring(0,10) | date:'EEEE d MMMM'}} &#8226;"
                 [nzValue]="booking.schedule.substring(0,10)"></nz-option>
             <nz-option *ngFor="let date of availability | keyvalue" [nzValue]="date.key"
-                nzLabel="{{date.key | date:'EEEE d MMMM'}}"></nz-option>
-        </nz-select> 
+                nzLabel="{{date.key | date:'EEEE d MMMM'}}" [nzHide]="date.key == booking.schedule.substring(0,10)">
+            </nz-option>
+        </nz-select>
     </div>
     <div class="col">
         <label>Horaire :</label>
@@ -14,13 +15,15 @@
             <nz-option *ngIf="selectedDate == booking.schedule.substring(0,10)"
                 [nzValue]="booking.schedule.substring(11,19)"
                 [nzLabel]="booking.schedule.substring(11,19) + ' &#8226;'"></nz-option>
-            <nz-option *ngFor="let time of availability[selectedDate]" [nzHide]="time.remaining == 0"
+            <nz-option *ngFor="let time of availability[selectedDate]"
+                [nzHide]="time.remaining == 0 || (selectedDate == booking.schedule.substring(0,10) && time.schedule ==booking.schedule.substring(11,19))"
                 [nzValue]="time.schedule" [nzLabel]="time.schedule">
             </nz-option>
         </nz-select>
     </div>
     <nz-divider class="w-50 d-block mx-auto"></nz-divider>
     <div class="col-12 mt-2">
-        <button nz-button nzType="primary" class="w-100" (click)="updateOrder(booking)">Modifier les articles de ma commande <i nz-icon nzType="shopping" nzTheme="outline"></i></button>
+        <button nz-button nzType="primary" class="w-100" (click)="updateOrder(booking)">Modifier les articles de ma
+            commande <i nz-icon nzType="shopping" nzTheme="outline"></i></button>
     </div>
 </div>
