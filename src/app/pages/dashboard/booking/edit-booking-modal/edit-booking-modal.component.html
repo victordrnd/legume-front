@@ -21,8 +21,8 @@
             </nz-option>
         </nz-select>
     </div>
-    <nz-divider class="w-50 d-block mx-auto"></nz-divider>
-    <div class="col-12 mt-2">
+    <nz-divider class="w-50 d-block mx-auto" *ngIf="booking.status.slug != 'waiting'"></nz-divider>
+    <div class="col-12 mt-2" *ngIf="booking.status.slug != 'waiting'">
         <button nz-button nzType="primary" class="w-100" (click)="updateOrder(booking)">Modifier les articles de ma
             commande <i nz-icon nzType="shopping" nzTheme="outline"></i></button>
     </div>
