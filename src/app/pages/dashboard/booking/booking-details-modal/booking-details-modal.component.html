@@ -13,7 +13,7 @@
                 class="bold float-right">{{ item.product.price * item.quantity | currency : 'EUR'}}</span></p>
     </li>
 </ul> -->
-<nz-table #basicTable [nzData]="booking?.order?.items" [nzShowPagination]="false">
+<nz-table #basicTable [nzData]="booking?.order?.items" [nzShowPagination]="false" [nzScroll]="{ y: '68vh' }">
     <thead>
         <tr class="bold">
             <th>Quantité</th>
