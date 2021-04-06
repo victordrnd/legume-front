@@ -1,0 +1,28 @@
+<h1 class="bold text-center mt-5">Nous contacter</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-md-auto mx-4 d-block p-4 bg-grey rounded-lg">
+      <form [formGroup]="form" nz-form>
+        <label>Adresse email : </label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="L'adresse email est invalide">
+            <input type="text" nz-input placeholder="Saisissez votre adresse mail" formControlName="email" />
+          </nz-form-control>
+        </nz-form-item>
+        <label>Message : </label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Veuillez saisir un message">
+            <textarea formControlName="message" nz-input placeholder="Saisissez votre message"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button nzType="primary" class="float-right">
+              Envoyer
+            </button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="pt-5">
+    <h1 class="text-center bold">Gestion des commandes</h1>
+    <div class="row">
+        <div class="col-md-10 mx-auto d-block">
+            <nz-table #basicTable [nzData]="bookings?.data" [nzPageSize]="bookings?.meta?.per_page" [nzPageIndex]="bookings?.meta?.current_page" [nzTotal]="bookings?.meta?.total" (nzPageIndexChange)="changePage($event)">
+                <thead>
+                    <tr class="bold">
+                        <th>N° Commande</th>
+                        <th>Créneau</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Statut</th>
+                        <th>Préparateur</th>
+                        <th>Montant</th>
+                        <th>Paiement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let booking of bookings?.data; index as i">
+                        <td class="bold">#{{booking.order_id}}</td>
+                        <td>{{booking.schedule | date:'EEEE d MMMM H:mm'}}</td>
+                        <td>{{booking.user?.lastname}}</td>
+                        <td>{{booking.user?.firstname}}</td>
+                        <td>
+                            <nz-tag [nzColor]="'purple'">{{booking.status?.libelle}}</nz-tag>
+                        </td>
+                        <td>{{booking.order?.preparator?.firstname}}</td>
+                        <td>{{booking.order?.total_price | currency:'EUR'}}</td>
+                        <td>
+                            <button nz-button nzType="primary" [nzSize]="'medium'" *ngIf="!booking.is_cash" (click)="payOrderCB(booking, i)" [nzLoading]="booking?.loading"><i nz-icon
+                                    nzType="credit-card" nzTheme="outline"></i> CB</button>
+                            <button nz-button nzType="default" [nzSize]="'medium'" *ngIf="booking.is_cash" (click)="payCash(booking)"><i nz-icon
+                                    nzType="wallet" nzTheme="outline"></i> Espèce</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+</div>

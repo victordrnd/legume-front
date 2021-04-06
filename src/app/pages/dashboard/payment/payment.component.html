@@ -1,0 +1,31 @@
+<div class="row bg-grey mx-0 pb-5">
+    <div class="col-md-10 mx-auto d-block mt-5">
+        <h1 class="bold text-center">Paiement</h1>
+        <div class="row mt-4">
+            <div class="col-md col-12 bg-white rounded-lg px-0 pb-05" *ngIf="booking">
+                <h5 class="m-3 bold">Paiement</h5>
+                <div class="bg-grey mx-3">
+                    <div id="stripe-card" class="p-2" style="height:36px"></div>
+                </div>
+                <p class="mx-3 mt-3"><small>Le débit ne sera effectif qu'à la délivrance des produits. Vos détails de
+                        paiement sont stockés en sécurité auprès de notre partenaire de paiement
+                        <span class="text-primary">Stripe</span>, en utilisant un cryptage de qualité bancaire.
+                    </small>
+                </p>
+                <label nz-checkbox class="mx-3" [(ngModel)]="checked">J'ai lu et j'accepte les conditions générales de vente</label>
+                <button nz-button nzType="primary" [nzLoading]="loading" [disabled]="disabled || !checked" (click)="confirmOrder()" class="mx-3 w-75 mt-2 d-block mx-auto">Confirmer le paiement</button>
+                <div class="mx-5 px-5 mt-5">
+                    <hr/>
+                </div>
+                <h5 class="mx-3 bold">Espèce</h5>
+                <p class="mx-3">Je préfère payer en espèce au moment de venir récupérer mes articles.</p>
+                <button nz-button nzType="primary" class="mx-3 w-75 mt-2 d-block mx-auto" [disabled]="loading" (click)="payEspece()">Je paie en espèce</button>
+            </div>
+            <div class="col-md-4 mx-05 mt-4 mt-md-0 mx-md-0">
+                <div class="sticky">
+                    <dashboard-order-summary [(ngModel)]="booking" [paymentMode]="true"></dashboard-order-summary>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

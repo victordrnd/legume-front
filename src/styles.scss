@@ -1,14 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-.anticon {
+button .anticon {
     transform: translateY(-5px);
 }
 
 body {
     font-family: "Averta";
 }
+* {
+    user-select: none;
+    overflow-x: none;
+}
 .line {
     height: 0.1875rem;
-    width: 9%;
+    width: 70px;
     background: #909cff;
     border-radius: 7px;
     float: left;
@@ -16,12 +20,45 @@ body {
 .bold {
     font-family: "AvertaBold";
 }
+.normal{
+    font-family: "Averta";
+}
 .text-primary {
     color: #909cff !important;
 }
+.bg-grey{
+    background-color : #f8f9fb;
+}
+.pointer{
+    cursor: pointer;
+}
+.rounded-lg{
+    border-radius:10px !important;
+}
+
+.ant-btn-primary[disabled] {
+    color: #fff;
+    background-color: #b8c1ff !important;
+    border-color: #b8c1ff;
+}
 ::-webkit-scrollbar {
+    width: 5px; 
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(144,156,255,0.3);
+    border-radius: 10px;
+}
+.ant-table-measure-now{
     display: none;
-  }
+}
+.mx-05{
+    margin-right:0.5rem;
+    margin-left: 0.5rem;
+}
+.pb-05{
+    padding-bottom: 0.5rem;
+}
+
 
 @font-face {
     font-family: "AvertaLight";

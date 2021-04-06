@@ -1,0 +1,37 @@
+<p *ngIf="error" class="text-center">{{error}}</p>
+<p class="text-right" *ngIf="products">Disponible du <b class="text-primary">{{products.from | date}}</b> au <b
+        class="text-primary">{{products.to | date}}</b></p>
+<nz-table #basicTable [nzData]="products?.products" nzShowPagination="false" [nzScroll]="{ y: '68vh' }"
+    class="rounded-lg">
+    <thead>
+        <tr class="bold">
+            <th>Nom</th>
+            <th *ngIf="!mobile">Origine</th>
+            <th>Catégorie</th>
+            <th>Unité</th>
+            <th>Prix</th>
+            <th *ngIf="orderMode">Action</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="products">
+            <tr *ngFor="let panier of products.paniers">
+                <td class="bold">{{ panier.libelle }} <i nz-icon class="text-primary pointer" nzType="question-circle"
+                        nzTheme="outline" (click)="openPanierModal(panier)"></i></td>
+                <td *ngIf="!mobile">France</td>
+                <td>Panier</td>
+                <td>{{ panier.unit }}</td>
+                <td>{{ panier.price | currency:'EUR'}}</td>
+                <td *ngIf="orderMode"><button nz-button nzType="primary" (click)="openQuantityModal(panier)"><i nz-icon
+                            nzType="shopping" nzTheme="outline"></i></button></td>
+            </tr>
+            <tr *ngFor="let product of products.products">
+                <td class="bold">{{ product.libelle }}</td>
+                <td *ngIf="!mobile">{{ product.origin }}</td>
+                <td>{{product.category.libelle}}</td>
+                <td>{{ product.unit }}</td>
+                <td>{{ product.price | currency:'EUR'}}</td>
+                <td *ngIf="orderMode"><button nz-button nzType="primary" (click)="openQuantityModal(product)"><i nz-icon
+                            nzType="shopping" nzTheme="outline"></i></button></td>
+            </tr>
+    </tbody>
+</nz-table>

@@ -3,11 +3,23 @@
     margin : 0px;
 }
 
+
+
+
 li{
-    font-family: "AvertaBold";
+    font-family: "Averta";
     margin-right: 20px;
 }
 
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-    color: #909cff;
+    color: #909cff !important;
 }
+.nav-link{
+    color: black !important;
+}
+
+.menu-burger{
+    width:35px;
+}
+
+

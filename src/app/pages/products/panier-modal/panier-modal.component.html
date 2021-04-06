@@ -1,0 +1,6 @@
+<h4 class="bold mb-0">Détails du {{panier.libelle}}</h4>
+<hr class="line"/>
+<br/>
+<ul class="list-unstyled">
+    <li *ngFor="let detail of panier.products" class="mt-4"> {{detail.quantity}} x {{detail.product.libelle}} ({{detail.product.unit}}) <nz-tag nzColor="purple">{{detail.product.category.libelle}}</nz-tag></li>
+</ul>

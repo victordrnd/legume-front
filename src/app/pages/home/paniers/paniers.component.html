@@ -1,0 +1,24 @@
+<div class="container mt-5" *ngIf="paniers?.paniers?.length > 0">
+    <h2 class="bold text-right mb-0">Nos paniers</h2>
+    <hr class="line float-right"/>
+    <br/><br/>
+    <div class="row mt-5">
+        <div class="col-12">
+            <p class="mb-1 text-right">Disponible du <span class="text-primary">{{paniers?.from | date}}</span> au <span class="text-primary">{{paniers?.to | date}}</span></p>
+        </div>
+        <div class="col-md-4 px-3" *ngFor="let panier of paniers?.paniers">
+            <div class="bg-grey p-3 rounded-lg">
+                <h5 class="bold">{{panier.libelle}}</h5>
+                <div class="row px-0">
+                    <div class="col-12 mt-2 px-0" *ngFor="let product of panier.products">
+                        <div class="bg-white p-2 mx-05">
+                            <nz-tag [nzColor]="'purple'" class="float-left">{{product.product.category.libelle}}</nz-tag>
+                            <h6 class="mb-0">{{product.product.libelle}} <small class="text-primary">({{product.product?.unit}})</small></h6>
+                            <p class="text-right text-muted mb-0">Qté: {{product.quantity}} </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

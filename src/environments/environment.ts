@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://legume-back.herokuapp.com/api/",
+  apiUrl: "http://localhost:8000/api/",
+  stripePublishableKey : "pk_test_JAUA5pfXtVwg0A4tJzYe35GL00ZOHS39yt"
 };
 
 /*

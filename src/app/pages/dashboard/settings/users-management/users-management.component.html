@@ -1,0 +1,51 @@
+<div class="pt-5">
+    <h1 class="bold text-center">Gestion des utilisateurs</h1>
+    <div class="row mx-0">
+        <div class="col-md-10 mx-auto d-block mx-4">
+            <div class="bg-white rounded-lg pt-3 pb-05">
+                <h5 class="m-3">Filtres</h5>
+                <div class="bg-grey mx-05 p-2 rounded-lg">
+                    <nz-input-group class="w-25" [nzSuffix]="suffixIconSearch">
+                        <input type="text" [(ngModel)]="keyword" (input)="search()" nz-input placeholder="Rechercher ..." />
+                    </nz-input-group>
+                    <ng-template #suffixIconSearch>
+                        <i nz-icon nzType="search"></i>
+                    </ng-template>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 mx-md-auto d-block mx-4 mt-4">
+            <nz-table #basicTable [nzData]="users" [nzShowPagination]="false">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Role</th>
+                        <th>Inscription</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.lastname | titlecase}}</td>
+                        <td>{{user.firstname | titlecase}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone | phone}}</td>
+                        <td>
+                            <nz-select nzAllowClear="false" nzBorderless="true" [(ngModel)]="user.role.id" (ngModelChange)="updateRole($event, user)">
+                                <nz-option *ngFor="let role of roles" [nzLabel]="role.libelle" [nzValue]="role.id"></nz-option>
+                            </nz-select>
+                        </td>
+                        <td>{{user.created_at | date}}</td>
+                        <td>
+                            <button nz-button nzType="primary" nzSize="small" (click)="edit(user)"><i nz-icon nzType="edit" nzTheme="outline"></i></button> 
+                        </td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+</div>

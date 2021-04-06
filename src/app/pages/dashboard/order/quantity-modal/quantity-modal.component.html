@@ -1,0 +1,16 @@
+<h4 class="bold mb-0">Combien en voulez vous ?</h4>
+<hr class="line" /><br /><br />
+<div class="row">
+    <div class="col-12">
+        <label>Quantité : <nz-tag [nzColor]="'orange'">{{item.unit}}</nz-tag></label>
+        <nz-row>
+            <nz-col nzSpan="12">
+              <nz-slider [nzMin]="1" [nzMax]="10" [(ngModel)]="item.quantity"></nz-slider>
+            </nz-col>
+            <div nz-col nzSpan="4"> 
+              <nz-input-number [nzMin]="0.1" [nzMax]="10" [ngStyle]="{ marginLeft: '16px' }" [(ngModel)]="item.quantity"></nz-input-number>
+            </div>
+          </nz-row>
+       
+    </div>
+</div>

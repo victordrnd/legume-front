@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-drive',
+  selector: 'page-drive',
   templateUrl: './drive.component.html',
   styleUrls: ['./drive.component.scss']
 })

@@ -8,15 +8,33 @@ import { distinctUntilChanged, map, catchError } from "rxjs/operators";
   providedIn: "root",
 })
 export class BookingService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getAllBooking(per_page = 15, page = 1): Observable<any> {
+  getAllBookings(per_page = 15, page = 1): Observable<any> {
     return this.http.get(
-      `${environment.apiUrl}/booking/all?per_page=${per_page}&page=${page}`
+      `${environment.apiUrl}booking/all?per_page=${per_page}&page=${page}`
     );
   }
 
   getById(id) {
-    return this.http.get(`${environment.apiUrl}/booking/${id}`);
+    return this.http.get(`${environment.apiUrl}booking/${id}`);
+  }
+
+
+  getMyBookings() {
+    return this.http.get(`${environment.apiUrl}booking/my`)
+  }
+
+  createBooking(obj) {
+    return this.http.post(`${environment.apiUrl}booking/book`, obj);
+  }
+
+  delete(id) {
+    return this.http.delete(`${environment.apiUrl}booking/${id}`);
+  }
+
+
+  updateSchedule(booking_id, obj) {
+    return this.http.put(`${environment.apiUrl}booking/${booking_id}/schedule`, obj);
   }
 }

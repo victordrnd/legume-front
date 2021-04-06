@@ -1,0 +1,13 @@
+.body{
+    background-color : #f8f9fb;
+}
+.ant-tag-purple {
+    color: #909cff;
+    background: #909cff1f;
+    border-color: #909cff;
+}
+::ng-deep{
+    .ant-menu-submenu-title{
+        color : #909cff !important;
+    }
+}
