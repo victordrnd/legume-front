@@ -21,4 +21,4 @@ jobs:
         BASE_BRANCH: master
         BRANCH: gh-pages
         FOLDER: dist/legume-angular
-        BUILD_SCRIPT: npm install && npm run build -- --prod && cp dist/legume-angular/index.html dist/legume-angular/404.html && echo "legume.victordurand.fr" >> dist/legume-angular/CNAME
+        BUILD_SCRIPT: npm install && npm run build -- --prod && cp dist/legume-angular/index.html dist/legume-angular/404.html && echo "rhumpa-loopa.eu" >> dist/legume-angular/CNAME
