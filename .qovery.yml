@@ -1,0 +1,15 @@
+---
+application:
+  name: "legume-front"
+  project: "test"
+  organization: "QoveryCommunity"
+databases:
+- type: "MYSQL"
+  name: "legume"
+  version: "8.0"
+routers:
+- name: "main-legume-front"
+  routes:
+  - application_name: "legume-front"
+    paths:
+    - "/*"
